@@ -1,0 +1,93 @@
+/* src/components/Intro.css */
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000000;
+  }
+  
+  .intro-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    animation: logo-appear 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .intro-title {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #ffffff;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .animate-letter {
+    display: inline-block;
+    opacity: 0;
+    font-family: 'Noto Sans';
+    transform: translateY(20px);
+    animation: letter-appear 0.5s ease-out forwards;
+  }
+  
+  .animate-letter:nth-child(1) {
+    animation-delay: 0.1s;
+    color: #FFA116;
+  }
+  
+  .animate-letter:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-letter:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .animate-letter:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  
+  .animate-letter:nth-child(5) {
+    animation-delay: 0.5s;
+    color: #FFA116;
+  }
+  
+  .animate-letter:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  
+  .animate-letter:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+  
+  .animate-letter:nth-child(8) {
+    animation-delay: 0.8s;
+  }
+  
+  /* Logo animation */
+  @keyframes logo-appear {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Letters animation */
+  @keyframes letter-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
