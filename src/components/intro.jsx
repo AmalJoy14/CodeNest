@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Intro.css';
+import '../styles/intro.css';
 import logo from '../assets/w-logo.svg'; 
 
 const Intro = () => {
