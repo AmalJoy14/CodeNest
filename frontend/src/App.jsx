@@ -23,7 +23,7 @@ const IntroWithTimer = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/signup'); 
-    }, 3000);
+    }, 2500);
 
     return () => clearTimeout(timer); 
   }, [navigate]);
