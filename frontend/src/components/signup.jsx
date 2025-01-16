@@ -6,6 +6,9 @@ const SignUp = () => {
     return (
         <div className="signup-full">
             <div className="signup-container">
+                <div className="img-container">
+                    <img src="src/assets/b-logo.svg" alt="Icon" width={50} height={50} />
+                </div> 
                 <h2>Sign Up</h2>
                 <form>
                     <input type="text" className="signup-input" placeholder="Username" required />

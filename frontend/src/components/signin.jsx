@@ -6,6 +6,9 @@ const SignIn = () => {
     return (
         <div className="signin-full">
             <div className="signin-container">
+                <div className="img-container">
+                    <img src="src/assets/b-logo.svg" alt="Icon" width={50} height={50} />
+                </div> 
                 <h2>Sign In</h2>
                 <form>
                     <input type="text" className="signin-input" placeholder="Username" required />
