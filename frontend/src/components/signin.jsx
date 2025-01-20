@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const SignIn = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -22,7 +23,11 @@ const SignIn = () => {
                 navigate("/home");
             }
         } catch (error) {
-            console.error(error);
+            if ( error.response.status === 404) {
+                setErrorMessage("*incorrect credentials."); 
+            } else {
+                setErrorMessage("An unexpected error occurred.");
+            }
         }
     };
 
@@ -38,6 +43,9 @@ const SignIn = () => {
                     <input type="password" className="signin-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     <button type="submit" className="signin-button">Sign in</button>
                 </form>
+                <div className="errorbox">
+                    {errorMessage && <p className="error_message">{errorMessage}</p>}
+                </div>
                 <div className="signin-link">
                      <Link to="/signup">Don't have an account?</Link>
                 </div>

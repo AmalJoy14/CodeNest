@@ -57,6 +57,8 @@ h2 {
 }
 
 .signin-link {
+    position: relative;
+    top: 30px;
     text-align: center;
     margin-top: 3%;
     font-size: small;

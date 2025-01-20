@@ -10,6 +10,7 @@
 }
 
 .signup-container {
+    position: relative;
     background-color: #fdfdfd;
     border-radius: 4%;
     padding: 5%;
@@ -51,7 +52,20 @@ h2 {
 }
 
 .signup-link {
+    position: relative;
+    top: 30px;
     text-align: center;
     margin-top: 3%;
     font-size: small;
+}
+.errorbox{
+    width: 100%;
+    position: relative;
+}
+.error_message{
+    position: absolute;
+    right: 0;
+    color: red;
+    margin-top: 1%;
+    font-size: smaller;
 }

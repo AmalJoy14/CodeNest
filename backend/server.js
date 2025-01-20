@@ -35,7 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 app.post('/api/signup',async(req, res) => {
     const { fullname, username, password } = req.body;
     let user = await userModel.findOne({username: username});
-    if(user) return res.status(400).json({ message: "User already exists" });
+    if(user) return res.status(409).json({ message: "User already exists" });
 
     bcrypt.genSalt(10, (err,salt) =>{
         bcrypt.hash(password, salt, async(err,hash) =>{

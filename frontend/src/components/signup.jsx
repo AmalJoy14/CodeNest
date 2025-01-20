@@ -7,6 +7,7 @@ const SignUp = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [fullname, setFullname] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -23,7 +24,11 @@ const SignUp = () => {
                 navigate("/home");
             }
         } catch (error) {
-            console.error(error);
+            if ( error.response.status === 409) {
+                setErrorMessage("*user already exists."); 
+              } else {
+                setErrorMessage("An unexpected error occurred.");
+              }
         }
     };
 
@@ -40,6 +45,9 @@ const SignUp = () => {
                     <input type="password" className="signup-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     <button type="submit" className="signup-button">Register</button>
                 </form>
+                <div className="errorbox">
+                    {errorMessage && <p className="error_message">{errorMessage}</p>}
+                </div>
                 <div className="signup-link">
                      <Link to="/signin">Already have an account?</Link>
                 </div>
