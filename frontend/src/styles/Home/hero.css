@@ -1,0 +1,59 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to right, #ffa116, #b3b3b3);
+    background-image: url("../../assets/code_background.png");
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+  }
+  
+  .hero_content {
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .hero_title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .hero_subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.2s both;
+  }
+  
+  .hero_cta {
+    display: inline-block;
+    background-color: white;
+    color: #ffa116;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    animation: fadeIn 1s ease-out 0.4s both;
+  }
+  
+  .hero_cta:hover {
+    background-color: #ffa116;
+    color: white;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  

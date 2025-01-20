@@ -1,0 +1,91 @@
+/* Discuss.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+  
+  .main {
+    flex-grow: 1;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-width: 90%;
+  }
+  
+  .title {
+    font-size: 1.875rem; /* Tailwind's text-3xl */
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #ffa116;
+  }
+  
+  .discussionBox {
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .searchBox {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #ffa116;
+    box-shadow: 0 0 0 2px rgba(255, 161, 22, 0.3);
+  }
+  
+  .discussionList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .discussionItem {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.3s ease;
+  }
+  
+  .discussionItem:last-child {
+    border-bottom: none;
+  }
+  
+  .discussionLink {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .discussionLink:hover {
+    background-color: #f9fafb;
+  }
+  
+  .discussionTitle {
+    font-size: 1.125rem; /* Tailwind's text-lg */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .discussionDetails {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem; /* Tailwind's text-sm */
+    color: #6b7280;
+  }
+  
+  .detailItem {
+    margin-right: 1rem;
+  }
+  

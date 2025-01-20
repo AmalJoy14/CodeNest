@@ -1,0 +1,66 @@
+.footer {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    min-width: 100%;
+    position: relative;
+    bottom: 0%;
+  }
+  
+  .footer_container {
+    min-width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+  }
+  
+  .branding {
+    margin-bottom: 1rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffa116;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tagline {
+    color: #b3b3b3;
+  }
+  
+
+  
+  .linkList1 , .linkList2 {
+    display: flex;
+    gap: 1.5rem;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .link:hover {
+    color: #ffa116;
+  }
+  
+  
+  .copyright {
+    margin-top: 2rem;
+    text-align: center;
+    color: #b3b3b3;
+    font-size: 0.875rem;
+  }
+  
+  
