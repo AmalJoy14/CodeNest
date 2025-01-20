@@ -21,7 +21,7 @@ const connectDB =async ()=> {
 const app = express();
 const PORT = 3000;
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
 };
 
@@ -59,19 +59,21 @@ app.post('/api/signin', async(req, res) =>{
     bcrypt.compare(req.body.password, user.password, (err, result) =>{
         if(!result) return res.status(404).json({ message: "Username or password is incorrect!" });
 
-        let token = jwt.sign({username: user.username} , "secretkey");
+        let token = jwt.sign({username: user.username} , process.env.ACCESS_TOKEN_SECRET);
         res.cookie("token", token);
         res.status(200).json({ message: "User signed in successfully" });
     });
 });
 
-app.get('/home', authenticateToken, (req, res) =>{
-    res.status(200).json({ message: "Welcome to home page" });
-});
+
 
 app.get('/logout' ,(req,res) =>{
     res.cookie("token", "");
-    res.redirect('/signin');
+    res.status(200).json({ message: "User logged out successfully" });
+});
+
+app.get('/authenticate', authenticateToken, (req, res) =>{
+    res.status(200).json({ message: "Welcome to home page" });
 });
 
 function authenticateToken(req, res, next){

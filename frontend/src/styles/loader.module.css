@@ -1,0 +1,109 @@
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: spin 3s linear infinite;
+  }
+  
+  .circle {
+    position: absolute;
+    border: 4px solid transparent;
+    border-radius: 50%;
+  }
+  
+  .circle1 {
+    width: 100%;
+    height: 100%;
+    border-top-color: #ffa116;
+    animation: spin1 2s linear infinite;
+  }
+  
+  .circle2 {
+    width: 75%;
+    height: 75%;
+    top: 12.5%;
+    left: 12.5%;
+    border-right-color: #ffa116;
+    animation: spin2 2s linear infinite;
+  }
+  
+  .circle3 {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    border-bottom-color: #ffa116;
+    animation: spin3 2s linear infinite;
+  }
+  
+  .dot {
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    background-color: #ffa116;
+    border-radius: 50%;
+    top: 42.5%;
+    left: 42.5%;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin1 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  @keyframes spin3 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+  }
+  
+  /* You can add this to your global CSS or App.css */
+  body {
+    background-color: black;
+    color: white;
+  }
+  
+  
