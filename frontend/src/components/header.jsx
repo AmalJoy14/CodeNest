@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';  
-import '../styles/header.css';  
+import { Link } from 'react-router-dom';
+import '../styles/header.css';
+import SignOut from './signoutbutton.jsx';
 
 function Header() {
   return (
@@ -13,11 +14,13 @@ function Header() {
         </Link>
         <nav>
           <ul className="navList">
+            <li><Link to="/home" className="navLink">Home</Link></li>
             <li><Link to="/problems" className="navLink">Problems</Link></li>
             <li><Link to="/leaderboard" className="navLink">Leaderboard</Link></li>
             <li><Link to="/discuss" className="navLink">Discuss</Link></li>
             <li><Link to="/connect" className="navLink">Connect</Link></li>
             <li><Link to="/profile" className="navLink">Profile</Link></li>
+            <SignOut/>
           </ul>
         </nav>
       </div>

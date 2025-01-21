@@ -13,11 +13,12 @@ function Footer() {
           <div className="links">
             <h3 className="linkTitle">Quick Links</h3>
             <ul className="linkList1">
+              <li><Link to="/home" className="link">Home</Link></li>
               <li><Link to="/problems" className="link">Problems</Link></li>
               <li><Link to="/leaderboard" className="link">Leaderboard</Link></li>
-              <li><Link to="/discuss" className="link">Discuss</Link></li>
             </ul>
             <ul className="linkList2">
+              <li><Link to="/discuss" className="link">Discuss</Link></li>
               <li><Link to="/connect" className="link">Connect</Link></li>
               <li><Link to="/profile" className="link">Profile</Link></li>
             </ul>

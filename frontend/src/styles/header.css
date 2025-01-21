@@ -16,6 +16,8 @@
   
   .header_logo {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: bold;
@@ -25,6 +27,8 @@
   
   .navList {
     display: flex;
+    justify-content: center;
+    align-items: center;
     list-style-type: none;
     gap: 1.5rem;
   }
@@ -38,5 +42,17 @@
   .navLink:hover {
     color: #ffa116;
   }
+
+  .navButton{
+    padding: 0.5rem 0.5rem;
+    background-color: #ffa116;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
   
-  
+  .navButton:hover {
+    background-color: #333230;
+  }
