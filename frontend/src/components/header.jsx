@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';  
 import '../styles/header.css';  
-
+import logo from '../assets/b-logo.svg';
 function Header() {
   return (
     <header className="header"> 
       <div className="header_container">
         <Link to="/" className="header_logo">
           <div className="img-container">
-            <img src="src/assets/b-logo.svg" alt="Icon" width={30} height={30} />
+          <img src={logo} alt="Icon" width={30} height={30} />
           </div> 
           CodeNest
         </Link>
