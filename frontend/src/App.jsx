@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Intro from './components/intro';
-import SignUp from './components/signup';
-import SignIn from './components/signin';
-import Home from "./components/home";
-import Leaderboard from "./components/leaderboard";
+import SignUp from './components/Auth/signup';
+import SignIn from './components/Auth/signin';
+import Home from "./components/Home/home";
+import Leaderboard from "./components/Leaderboard/leaderboard";
 import Problems from "./components/problems";
 import Discuss from "./components/discuss";
 import Connect from "./components/connect";
 import Profile from "./components/profile";
-import PrivateRoute from './components/private_route';
+import PrivateRoute from './components/Auth/private_route';
 
 const App = () => {
   return (

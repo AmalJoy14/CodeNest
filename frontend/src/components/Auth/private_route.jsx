@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate , useLocation} from 'react-router-dom';
 import Axios from 'axios';
-import Loader from './loader';
+import Loader from '../loader';
 
 
 const PrivateRoute = ({ children }) => {

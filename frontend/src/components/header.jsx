@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../styles/header.css';
-import SignOut from './signoutbutton.jsx';
+import SignOut from './Auth/signoutbutton.jsx';
 
 function Header() {
   return (

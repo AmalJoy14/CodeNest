@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import ReactDOM from "react-dom"
-import styles from "../styles/signout.module.css"
+import styles from "./signout.module.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 

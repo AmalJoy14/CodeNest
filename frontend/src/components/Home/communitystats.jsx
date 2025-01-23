@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import styles from '../../styles/Home/CommunityStats.module.css'
+import styles from './CommunityStats.module.css'
 
 const stats = [
   { label: 'Total Coders', value: 10000 },

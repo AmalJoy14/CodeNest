@@ -1,4 +1,4 @@
-import styles from '../../styles/Home/Features.module.css'
+import styles from './Features.module.css'
 
 const features = [
   {

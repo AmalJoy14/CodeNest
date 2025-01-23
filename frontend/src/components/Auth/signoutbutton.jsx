@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import SignOutModal from "./signout"
-import styles from "../styles/signoutbutton.module.css"
+import styles from "./signoutbutton.module.css"
 
 function SignOut() {
   const [showModal, setShowModal] = useState(false)
