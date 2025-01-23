@@ -5,7 +5,7 @@ import SignUp from './components/signup';
 import SignIn from './components/signin';
 import Home from "./components/home";
 import Leaderboard from "./components/leaderboard";
-import Problems from "./components/problems";
+import Problems from "./components/Problems/problems";
 import Discuss from "./components/discuss";
 import Connect from "./components/connect";
 import Profile from "./components/profile";

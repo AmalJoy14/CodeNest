@@ -17,7 +17,7 @@ import Greedy from './greedy';
 import Intervals from './intervals';
 import MathAndGeometry from './math-geometry';
 import BitManipulation from './bit-manipulation';
-
+import Stack from './stack'
 const Topics = () => {
   return (
     <Routes>
@@ -38,6 +38,7 @@ const Topics = () => {
       <Route path="intervals" element={<Intervals />} />
       <Route path="math-geometry" element={<MathAndGeometry />} />
       <Route path="bit-manipulation" element={<BitManipulation />} />
+      <Route path="stack" element={<Stack />} />
     </Routes>
   );
 };

@@ -2,23 +2,17 @@ import Header from '../header';
 import Footer from '../footer';
 import styles from './topics.module.css';
 import { Link } from 'react-router-dom';
-import camicon from '../../assets/cam.svg';
+import camicon from '../../assets/cam.svg'
 
-export default function Graphs() {
+export default function Stack() {
   const questions = [
-    { id: 1, title: 'Number of Islands', difficulty: 'Medium', acceptance: '68%' },
-    { id: 2, title: 'Max Area of Island', difficulty: 'Medium', acceptance: '64%' },
-    { id: 3, title: 'Clone Graph', difficulty: 'Medium', acceptance: '62%' },
-    { id: 4, title: 'Walls And Gates', difficulty: 'Medium', acceptance: '61%' },
-    { id: 5, title: 'Rotting Oranges', difficulty: 'Medium', acceptance: '63%' },
-    { id: 6, title: 'Pacific Atlantic Water Flow', difficulty: 'Medium', acceptance: '60%' },
-    { id: 7, title: 'Surrounded Regions', difficulty: 'Medium', acceptance: '67%' },
-    { id: 8, title: 'Course Schedule', difficulty: 'Medium', acceptance: '66%' },
-    { id: 9, title: 'Course Schedule II', difficulty: 'Medium', acceptance: '64%' },
-    { id: 10, title: 'Graph Valid Tree', difficulty: 'Medium', acceptance: '59%' },
-    { id: 11, title: 'Number of Connected Components In An Undirected Graph', difficulty: 'Medium', acceptance: '57%' },
-    { id: 12, title: 'Redundant Connection', difficulty: 'Medium', acceptance: '58%' },
-    { id: 13, title: 'Word Ladder', difficulty: 'Hard', acceptance: '54%' }
+    { id: 1, title: 'Valid Parentheses', difficulty: 'Easy', acceptance: '65%' },
+    { id: 2, title: 'Min Stack', difficulty: 'Medium', acceptance: '50%' },
+    { id: 3, title: 'Evaluate Reverse Polish Notation', difficulty: 'Medium', acceptance: '45%' },
+    { id: 4, title: 'Generate Parentheses', difficulty: 'Medium', acceptance: '55%' },
+    { id: 5, title: 'Daily Temperatures', difficulty: 'Medium', acceptance: '60%' },
+    { id: 6, title: 'Car Fleet', difficulty: 'Medium', acceptance: '52%' },
+    { id: 7, title: 'Largest Rectangle In Histogram', difficulty: 'Hard', acceptance: '40%' },
   ];
 
   const getDifficultyClass = (difficulty) => {
@@ -36,9 +30,9 @@ export default function Graphs() {
 
   return (
     <div className={styles.container}>
-      <Header />
+      <Header /> 
       <main className={styles.main}>
-        <h1 className={styles.title}>Graphs</h1>
+        <h1 className={styles.title}>Stack</h1>
         <div className={styles.tableContainer}>
           <table className={styles.table}>
             <thead className={styles.thead}>
@@ -55,7 +49,7 @@ export default function Graphs() {
                 <tr key={question.id}>
                   <td className={styles.td}>{question.id}</td>
                   <td className={styles.td}>
-                    <Link className={styles.link} to={`/problems/Graphs/${question.title.toLowerCase().replace(/ /g, '-')}`}>
+                    <Link className={styles.link} to={`/problems/stack/${question.title.toLowerCase().replace(/ /g, '-')}`}>
                       {question.title}
                     </Link>
                   </td>

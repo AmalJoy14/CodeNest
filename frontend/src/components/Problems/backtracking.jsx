@@ -1,6 +1,6 @@
 import Header from '../header';
 import Footer from '../footer';
-import styles from '../../styles/topics.module.css';
+import styles from './topics.module.css';
 import { Link } from 'react-router-dom';
 import camicon from '../../assets/cam.svg'
 export default function Backtracking() {
