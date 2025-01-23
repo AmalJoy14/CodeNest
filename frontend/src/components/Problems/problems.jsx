@@ -1,6 +1,6 @@
-import Header from './header';
-import Footer from './footer';
-import styles from '../styles/Problems.module.css';
+import Header from '../header';
+import Footer from '../footer';
+import styles from './Problems.module.css';
 
 export default function Problems() {
   const problems = [
