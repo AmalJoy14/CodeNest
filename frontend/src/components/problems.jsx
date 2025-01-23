@@ -23,22 +23,6 @@ export default function Problems() {
     { id: 16, title: 'Intervals', link: '/Problems/intervals' },
     { id: 17, title: 'Bit Manipulation', link: '/Problems/bit-manipulation' },
     { id: 18, title: 'Math and geometry', link: '/Problems/math-geometry' },
-    /*{ id: 3, title: 'Sliding Window', link: '/Problems/sliding-window' },
-    { id: 4, title: 'Matrix', link: '/Problems/matrix' },
-    { id: 5, title: 'Hash Map', link: '/Problems/hash-map' },
-    { id: 6, title: 'Intervals', link: '/Problems/intervals' },
-    { id: 7, title: 'Stack', link: '/Problems/stack' },
-    { id: 8, title: 'Linked List', link: '/Problems/linked-list' },
-    { id: 9, title: 'Binary Tree General', link: '/Problems/binary-tree-general' },
-    { id: 10, title: 'Binary Tree BFS', link: '/Problems/binary-tree-bfs' },
-    { id: 11, title: 'Binary Search Tree', link: '/Problems/binary-search-tree' },
-    { id: 12, title: 'Graph General', link: '/Problems/graph-general' },
-    { id: 13, title: 'Graph BFS', link: '/Problems/graph-bfs' },
-    { id: 14, title: 'Trie', link: '/Problems/trie' },
-    { id: 15, title: 'Backtracking', link: '/Problems/backtracking' },
-    { id: 16, title: 'Divide & Conquer', link: '/Problems/divide-and-conquer' },
-    { id: 17, title: '1D DP', link: '/Problems/1d-dp' },
-     */
   ];
   return (
     <div className={styles.container}>
