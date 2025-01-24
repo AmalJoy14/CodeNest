@@ -25,17 +25,47 @@
   color: #ffa116;
   cursor: pointer;
   font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .5rem;
   transition: all 0.3s ease;
   margin: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
 }
 
-.tab:hover {
+/* .tab:hover {
   background-color: rgba(255, 161, 22, 0.2);
-}
+} */
+
 
 .activeTab {
   background-color: #ffa116;
   color: #000000;
 }
 
+.icon{
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.iconbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 10%;
+}
+
+.iconbox[data-platform="LeetCode"] , .activeTab .iconbox[data-platform="LeetCode"]{
+  background: #4e402c;
+}
+
+.iconbox[data-platform="Codeforces"] , .activeTab .iconbox[data-platform="Codeforces"]{
+  background: #453927;
+}
+
+.iconbox[data-platform="CodeNest"] , .activeTab .iconbox[data-platform="CodeNest"]{
+  background: #3a3021;
+}
