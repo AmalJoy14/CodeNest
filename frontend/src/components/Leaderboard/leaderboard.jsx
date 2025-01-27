@@ -43,7 +43,7 @@ export default function LeaderboardPage() {
               className={`${styles.tab} ${activeTab === platform ? styles.activeTab : ""}`}
               onClick={() => setActiveTab(platform)}
             >
-              <div className={styles.iconbox} data-platform={platform}>
+              <div className={styles.iconbox} >
                 <img src={logoMap[platform]} className={styles.icon} />
               </div>
 

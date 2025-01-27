@@ -1,8 +1,8 @@
 .container {
   min-width: 100%;
   margin: 0 auto;
-  background: rgb(0,0,0);
-  background: linear-gradient(30deg, rgba(0,0,0,1) 0%, rgba(108,89,61,1) 52%, rgba(0,0,0,1) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(108, 89, 61, 1) 52%, rgba(0, 0, 0, 1) 100%);
 }
 
 .title {
@@ -31,41 +31,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.4rem;
 }
 
-/* .tab:hover {
-  background-color: rgba(255, 161, 22, 0.2);
-} */
-
-
-.activeTab {
-  background-color: #ffa116;
-  color: #000000;
-}
-
-.icon{
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.iconbox{
+.iconbox {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 10%;
+  transition: all 0.2s ease;
+  background-color: transparent !important;
 }
 
-.iconbox[data-platform="LeetCode"] , .activeTab .iconbox[data-platform="LeetCode"]{
-  background: #4e402c;
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
 }
 
-.iconbox[data-platform="Codeforces"] , .activeTab .iconbox[data-platform="Codeforces"]{
-  background: #453927;
+.tab:hover:not(.activeTab) {
+  background-color: rgba(255, 161, 22, 0.2);
 }
 
-.iconbox[data-platform="CodeNest"] , .activeTab .iconbox[data-platform="CodeNest"]{
-  background: #3a3021;
+.activeTab {
+  background-color: #ffa116;
+  color: #000000;
 }
+
+.tab:hover:not(.activeTab) .iconbox,
+.activeTab .iconbox {
+  background-color: transparent !important;
+}
+
+
+.activeTab .icon {
+  filter: brightness(0);
+}
+
