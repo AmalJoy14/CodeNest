@@ -10,7 +10,7 @@ import Discuss from "./components/discuss";
 import Connect from "./components/connect";
 import Profile from "./components/profile";
 import PrivateRoute from './components/Auth/private_route';
-
+import Topics from './components/Problems/topics';
 const App = () => {
   return (
     <Router>
@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/discuss" element={<PrivateRoute><Discuss /></PrivateRoute>} />
         <Route path="/connect" element={<PrivateRoute><Connect /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
+        <Route path="/problems/*" element={<Topics />} />
       </Routes>
     </Router>
   );

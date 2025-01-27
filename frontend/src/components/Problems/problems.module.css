@@ -1,69 +1,76 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #ffffff;
-    color: black;
-  }
-  
-  .main {
-    flex-grow: 1;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    min-width: 90%;
-  }
-  
-  .title {
-    font-size: 1.875rem; 
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #ffa116;
-  }
-  
-  .tableContainer {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .thead {
-    background-color: #ffa116;
-    color: #fff;
-  }
-  
-  .th {
-    text-align: left;
-    padding: 0.75rem;
-  }
-  
-  .tbody tr {
-    border-bottom: 1px solid #e5e7eb;
-    transition: background-color 0.3s ease;
-  }
-  
-  .tbody tr:hover {
-    background-color: #f9fafb;
-  }
-  
-  .td {
-    padding: 0.75rem;
-  }
-  
-  .easy {
-    color: #10b981; 
-  }
-  
-  .medium {
-    color: #fbbf24; 
-  }
-  
-  .hard {
-    color: #ef4444; 
-  }
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: rgb(0,0,0);
+  background: linear-gradient(30deg, rgba(0,0,0,1) 0%, rgba(108,89,61,1) 52%, rgba(0,0,0,1) 100%);
+}
+
+.main {
+  flex-grow: 1;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-width: 90%;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #ffa116;
+}
+
+.tableContainer {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thead {
+  background-color: #ffa116;
+  color: #fff;
+}
+
+.th {
+  text-align: left;
+  padding: 0.75rem;
+}
+
+.th-topic {
+  padding-left: 1.5rem; /* Adjust this value as needed */
+}
+
+.tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.3s ease;
+}
+
+.tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.td {
+  padding: 0.75rem;
+  color: black;
+}
+
+.td-topic {
+  padding-left: 1.5rem; /* Adjust this value as needed */
+}
+
+.link {
+  text-decoration: none;
+  color: #ffa116;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #cc8500;
+}
