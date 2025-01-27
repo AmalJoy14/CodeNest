@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.main {
+    flex-grow: 1;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-width: 90%;
+}
+
+.title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #ffa116;
+}
+
+.tableContainer {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.thead {
+    background-color: #ffa116;
+    color: #fff;
+}
+
+.th {
+    text-align: left;
+    padding: 0.75rem;
+    
+}
+
+.tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.3s ease;
+}
+
+.tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.td {
+    padding: 0.75rem;
+    color: #000000;
+    padding-left: 2.5rem;
+}
+
+.sol {
+    padding: 0.75rem;
+    padding-left: 2.5rem;
+}
+.link {
+    text-decoration: none;
+    color: #ffa116;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+.camera {
+    fill: #808080 ;
+    transition: all 0.3s ease; 
+  }
+  
+  .camera:hover {
+    fill: #ff5733; 
+    transform: scale(1.2);
+    cursor: pointer; 
+  }
+  .easy {
+    background-color: #d4edda; 
+    color: #155724; 
+  }
+  
+  .medium {
+    background-color: #fff3cd;
+    color: #856404; 
+  }
+  
+  .hard {
+    background-color: #f8d7da; 
+    color: #721c24; 
+  }
