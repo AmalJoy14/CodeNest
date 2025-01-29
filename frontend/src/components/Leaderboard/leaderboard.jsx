@@ -1,7 +1,7 @@
 import  Header  from '../header.jsx'
 import  Footer  from '../footer.jsx'
 import React, { useState } from "react"
-import UsernameForms from "./UsernameForms"
+import UsernameForms from "./usernameForms"
 import LeaderboardTable from "./leaderboardTable.jsx"
 import styles from "./leaderboard.module.css"
 

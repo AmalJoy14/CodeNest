@@ -44,7 +44,7 @@ app.post('/api/signup',async(req, res) => {
                 username,
                 password: hash
             })
-            console.log(createdUser);
+            
             let token = jwt.sign({username} , process.env.ACCESS_TOKEN_SECRET);
             res.cookie("token", token);
             res.status(200).json({ message: "User registered successfully" });
@@ -56,6 +56,9 @@ app.post('/api/signin', async(req, res) =>{
     let user = await userModel.findOne({username: req.body.username});
     if(!user) return res.status(404).json({ message: "Username or password is incorrect!" });
 
+    user.lastSignIn = new Date();
+    await user.save();
+
     bcrypt.compare(req.body.password, user.password, (err, result) =>{
         if(!result) return res.status(404).json({ message: "Username or password is incorrect!" });
 
@@ -65,7 +68,61 @@ app.post('/api/signin', async(req, res) =>{
     });
 });
 
+app.get("/api/homeData", async (req, res) => {
+    try {
+        const userCount = await userModel.countDocuments();
 
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+        const activeUserCount = await userModel.countDocuments({ lastSignIn: { $gte: sixMonthsAgo } });
+
+        const totalProblemsSolved = await userModel.aggregate([ { $group: { _id: null, total: { $sum: { $add: ["$easySolved", "$mediumSolved", "$hardSolved"] } } } } ]);
+        
+        const problemsSolved = totalProblemsSolved.length > 0 ? totalProblemsSolved[0].total : 0;
+
+        res.status(200).json({ userCount, activeUserCount , problemsSolved }); 
+    }
+    catch (error) {
+        console.error("Error fetching user count:", error);
+    }
+});
+
+app.post('/leetcode/addUsername',authenticateToken, async(req, res) =>{
+    const {leetcodeUsername} = req.body;
+    const username = req.user.username;
+
+    let user = await userModel.findOne({username: username});
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.leetcodeUsername = leetcodeUsername;
+    user.leetcodeUsername.toggle = 1;
+    await user.save();
+
+    res.status(200).json({ message: "Leetcode username added successfully" });
+});
+
+app.get('/leetcode/getUsername', authenticateToken, async (req, res) => {
+    const { platform } = req.query; 
+    const username = req.user.username; 
+
+    let user = await userModel.findOne({ username });
+    let toggle = user.leetcodeUsername.toggle;
+
+    let platformData;
+    switch (platform) {
+        case 'LeetCode':
+            platformData = user.leetcodeUsername;
+            break;
+        case 'Codeforces':
+            platformData = user.codeforcesUsername;
+            break;
+        default:
+            return res.status(400).json({ message: "Unsupported platform" });
+    }
+
+    res.status(200).json({ platform, username: platformData.value , toggle : platformData.toggle});
+});
+  
 
 app.get('/logout' ,(req,res) =>{
     res.cookie("token", "");

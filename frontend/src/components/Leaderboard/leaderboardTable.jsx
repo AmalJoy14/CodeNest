@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { fetchLeaderboardData } from "../../api"
 import styles from "./leaderboardTable.module.css"
+import Loader from "../Loader"
 
 export default function LeaderboardTable({ platform }) {
   const [data, setData] = useState([])
@@ -18,7 +19,7 @@ export default function LeaderboardTable({ platform }) {
   }, [platform])
 
   if (loading) {
-    return <div className={styles.loading}>Loading...</div>
+    return <div className={styles.loading}><Loader/></div>
   }
 
   return (
@@ -27,6 +28,7 @@ export default function LeaderboardTable({ platform }) {
         <thead>
           <tr>
             <th>Rank</th>
+            <th>Fullname</th>
             <th>Username</th>
             <th>Contest Rating</th>
             <th>Problems Solved</th>
@@ -36,6 +38,7 @@ export default function LeaderboardTable({ platform }) {
           {data.map((entry, index) => (
             <tr key={entry.username}>
               <td>{index + 1}</td>
+              <td>{entry.fullname}</td>
               <td>{entry.username}</td>
               <td>{entry.contestRating}</td>
               <td>{entry.problemsSolved}</td>

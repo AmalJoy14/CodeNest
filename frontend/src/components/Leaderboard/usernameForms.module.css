@@ -7,8 +7,6 @@
   .inputGroup {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 300px;
   }
   
   .inputGroup label {
@@ -24,11 +22,43 @@
     background-color: #1e1e1e;
     color: #ffffff;
     font-size: 1rem;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    min-width: 250px;
   }
   
-  .input:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 161, 22, 0.5);
+  input:focus {
+    outline: none;         
+    border-color: none; 
+  }
+
+  .form{
+    display: flex;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .submitBtn{
+    height: 100%;
+    width: 2rem;
+    padding: 0.5rem;
+    border: 1px solid #ffa116;
+    border-radius: 4px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 1rem;
   }
   
+   .submitBtn:hover {
+    background-color: #ff8c00;
+    color: black;
+  }
+  .blocked{
+    user-select: none;
+    pointer-events: none;
+    background-color: #ffa116;
+    color: #000000;
+  }
   
