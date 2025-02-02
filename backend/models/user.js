@@ -29,15 +29,9 @@ const userSchema = new mongoose.Schema({
       default: 0,
     },
     leetcodeUsername: {
-      value: {
-        type: String,
-        default: ""
-      },
-      toggle: {
-        type: Number,
-        default: 0
-      }
-    },
+      type: String,
+      default: ""
+    },   
     codeforcesUsername: {
       type: String,
       default: "",

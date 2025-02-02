@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { fetchLeaderboardData } from "../../api"
+import { fetchLeaderboardData } from "./api"
 import styles from "./leaderboardTable.module.css"
 import Loader from "../Loader"
 
@@ -11,8 +11,8 @@ export default function LeaderboardTable({ platform }) {
     const loadData = async () => {
       setLoading(true)
       const leaderboardData = await fetchLeaderboardData(platform)
-      const sortedData = leaderboardData.sort((a, b) => b.contestRating - a.contestRating)
-      setData(sortedData)
+      const sortedData = leaderboardData.sort((a, b) => b.contestRating - a.contestRating);
+      setData(sortedData);
       setLoading(false)
     }
     loadData()
@@ -41,7 +41,7 @@ export default function LeaderboardTable({ platform }) {
               <td>{entry.fullname}</td>
               <td>{entry.username}</td>
               <td>{entry.contestRating}</td>
-              <td>{entry.problemsSolved}</td>
+              <td>{entry.totalSolved}</td>
             </tr>
           ))}
         </tbody>

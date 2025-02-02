@@ -1,21 +1,9 @@
 import React from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck , faTimes} from '@fortawesome/free-solid-svg-icons';
 import styles from "./UsernameForms.module.css"
 import Axios from "axios";
 import { useEffect, useState } from "react";
-
-const fetchUsername = async (platform) => {
-  try {
-    const response = await Axios.get(`http://localhost:3000/leetcode/getUsername?platform=${platform}`, { withCredentials: true });
-    if (response.status === 200) {
-      return response.data;
-    }
-  } catch (error) {
-    console.error("Error fetching username:", error.response?.data || error.message);
-  }
-  return "";
-};
 
 
 const validateLeetcodeUsername = async (username) => {
@@ -23,61 +11,94 @@ const validateLeetcodeUsername = async (username) => {
     const response = await Axios.get(
       `https://leetcode-stats-api.herokuapp.com/${username}`
     );
-    console.log(response.data);
     if (response.data.status === "success") {
       return true;
     }
-    console.log(username);
 
     return false;
   } catch (error) {
-    console.error("Error validating username:", error.response?.data || error.message);
     return false;
   }
 };
 
-export default function UsernameForms({ platform, username, onUsernameChange }) {
-  const [fetchedUsername, setFetchedUsername] = useState("");
-  const [toggle , setToggle] = useState(0);
+const validateCodeforcesUsername = async (username) => {
+  try {
+    const response = await Axios.get(
+      `https://codeforces.com/api/user.info?handles=${username}`
+    );
+    if (response.data.status === "OK") {
+      return true;
+    }
+    return false;
+  } catch (error) {
+    return false;
+  }
+}
 
-  ////////////////////////////////////////////////////
+export default function UsernameForms({ platform }) {
+  const [content,setContent] = useState("");
+  const [isPresent, setIsPresent] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
+
   useEffect(() => {
-    const getUsername = async () => {
-      const data = await fetchUsername(platform);
-      const username = data.username;
-      const toggle = data.toggle;
-      setToggle(toggle);
-      setFetchedUsername(username);
-      onUsernameChange(platform, username);
+    setIsInvalid(false);
+  }, [platform]);
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      try {
+        const response = await Axios.get(`http://localhost:3000/platform/getUsername?platform=${platform}`, {
+          withCredentials: true,
+        });
+        if (response.data.username) {
+          setContent(response.data.username);
+          setIsPresent(true);
+        }
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
     };
-    getUsername();
-  }, [platform, onUsernameChange]);
-  ////////////////////////////////////////////////////
+
+    fetchUsername();
+  }, [platform]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!username) {
+    if(isPresent){
+      setIsPresent(false);
+      return;
+    }
+
+    if (!content) {
       console.error("Username is required!");
+      setIsInvalid(true);
       return;
     }
   
     // Validate the username
-    const isValid = await validateLeetcodeUsername(username);
+    let isValid = false;
+    if(platform === "LeetCode")
+      isValid = await validateLeetcodeUsername(content);
+    else if(platform === "Codeforces")
+      isValid = await validateCodeforcesUsername(content);
+    
     if (!isValid) {
-      console.error("Invalid LeetCode username!");
+      console.error(`Invalid ${platform} username!`);
+      setIsInvalid(true);
       return;
     }
 
+    setIsInvalid(false);
+    console.log(`Valid ${platform} username`);
     try {
       const response = await Axios.post(
-        "http://localhost:3000/leetcode/addUsername",
-        { platform, leetcodeUsername: username },
+        "http://localhost:3000/platform/addUsername",
+        { platform, platformUsername: content },
         { withCredentials: true }
       );
       if (response.status === 200) {
-        console.log(response.data.message);
-        document.getElementById(`${platform}-username`).classList.add(styles.blocked);
+        setIsPresent(true);
       }
     } catch (error) {
       console.log(error);
@@ -93,13 +114,16 @@ export default function UsernameForms({ platform, username, onUsernameChange }) 
           <input
             type="text"
             id={`${platform}-username`}
-            value={username || ""}
-            onChange={(e) => onUsernameChange(platform, e.target.value)}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             placeholder={`Enter your ${platform} username`}
-            className={styles.input}
+            className={`${styles.input} ${isPresent ? styles.blocked : ''}`}
           />
-          <button className={styles.submitBtn}><FontAwesomeIcon icon={faCheck} /></button>
+          <button className={`${styles.submitBtn} ${isPresent ? styles.cancel : ''}`}>
+            <FontAwesomeIcon icon={isPresent ? faTimes : faCheck} />
+          </button>
         </form>
+        {isInvalid && <div className={styles.invalid}>*Invalid Username</div>}
       </div>
     </div>
   )

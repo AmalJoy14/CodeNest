@@ -1,7 +1,9 @@
 .formContainer {
     display: flex;
     justify-content: center;
-    margin: 1rem 0 2rem;
+    margin: 1rem 0 1rem;
+    padding-bottom: 1.3rem;
+    position: relative;
   }
   
   .inputGroup {
@@ -52,7 +54,7 @@
   }
   
    .submitBtn:hover {
-    background-color: #ff8c00;
+    background-color: #ffa116;
     color: black;
   }
   .blocked{
@@ -60,5 +62,16 @@
     pointer-events: none;
     background-color: #ffa116;
     color: #000000;
+  }
+  .cancel{
+    background-color: #ffa116;
+    color: #000000;
+  }
+  .invalid{
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    color: rgb(255, 0, 0);
+    font-size: small;
   }
   

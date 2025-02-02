@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import userModel from './models/user.js';
+import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -87,26 +88,32 @@ app.get("/api/homeData", async (req, res) => {
     }
 });
 
-app.post('/leetcode/addUsername',authenticateToken, async(req, res) =>{
-    const {leetcodeUsername} = req.body;
+app.post('/platform/addUsername',authenticateToken, async(req, res) =>{
+    const {platformUsername , platform} = req.body;
     const username = req.user.username;
 
     let user = await userModel.findOne({username: username});
-    if (!user) return res.status(404).json({ message: "User not found" });
 
-    user.leetcodeUsername = leetcodeUsername;
-    user.leetcodeUsername.toggle = 1;
+    
+    switch (platform) {
+        case 'LeetCode':
+            user.leetcodeUsername = platformUsername;
+            break;
+        case 'Codeforces':
+            user.codeforcesUsername = platformUsername;
+            break;
+    }
+
     await user.save();
-
-    res.status(200).json({ message: "Leetcode username added successfully" });
+    
+    res.status(200).json({ message: `${platform} username added successfully` });
 });
 
-app.get('/leetcode/getUsername', authenticateToken, async (req, res) => {
+app.get('/platform/getUsername', authenticateToken, async (req, res) => {
     const { platform } = req.query; 
     const username = req.user.username; 
 
     let user = await userModel.findOne({ username });
-    let toggle = user.leetcodeUsername.toggle;
 
     let platformData;
     switch (platform) {
@@ -116,13 +123,59 @@ app.get('/leetcode/getUsername', authenticateToken, async (req, res) => {
         case 'Codeforces':
             platformData = user.codeforcesUsername;
             break;
-        default:
-            return res.status(400).json({ message: "Unsupported platform" });
     }
 
-    res.status(200).json({ platform, username: platformData.value , toggle : platformData.toggle});
+    res.status(200).json({username: platformData });
 });
-  
+
+app.get('/leaderboard/codenest',authenticateToken, async (req, res) => {
+    try {
+        const username = req.user.username;
+        const leaderboardData = await userModel.find({}, { _id: 0, username: 1, fullname: 1, easySolved: 1, mediumSolved: 1 , hardSolved: 1 });
+
+        const codenestData = leaderboardData.map(user => {
+            const highlight = user.username === username;
+            const totalSolved = user.easySolved + user.mediumSolved + user.hardSolved;
+            const contestRating = (user.easySolved * 3) + (user.mediumSolved * 5) + (user.hardSolved * 8);
+            return { username: user.username, fullname: user.fullname, contestRating , totalSolved , highlight };
+        });
+        res.status(200).json(codenestData);
+    } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+    }
+});
+
+app.get('/leaderboard/leetcode',authenticateToken, async (req, res) => {
+    res.status(200).json({ message: "LeetCode leaderboard data" });
+});
+
+
+app.get('/leaderboard/codeforces',authenticateToken, async (req, res) => {
+    try{
+        const username = req.user.username;
+        const codeforcesUsers = await userModel.find({ codeforcesUsername: { $ne: "" } }, { _id: 0,username : 1, fullname : 1, codeforcesUsername: 1 });
+        const codeforcesUsername = await userModel.findOne({ username: { $eq: username } }, { _id: 0, codeforcesUsername: 1 });
+        
+        // Create a single API request with all usernames joined by semicolon
+        const handles = codeforcesUsers.map(user => user.codeforcesUsername).join(";");
+        const response = await axios.get(`https://codeforces.com/api/user.info?handles=${handles}`);
+
+
+        const leaderboardData = response.data.result.map((userData, index) => ({
+            username: codeforcesUsers[index].username, 
+            codeforcesUsername: userData.handle,
+            fullname: codeforcesUsers[index].fullname,
+            contestRating: userData.rating || 0,
+            totalSolved: userData.contribution || 0,
+            highlight: userData.handle === codeforcesUsername.codeforcesUsername
+        }));
+
+        res.status(200).json(leaderboardData);
+    }
+    catch(error){
+        console.error("Error fetching leaderboard data:", error);
+    }
+});
 
 app.get('/logout' ,(req,res) =>{
     res.cookie("token", "");

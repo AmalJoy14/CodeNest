@@ -52,7 +52,7 @@ export default function LeaderboardPage() {
           ))}
         
       </div>
-      <UsernameForms platform={activeTab} username={usernames[activeTab]} onUsernameChange={handleUsernameChange} />
+      {activeTab !== "CodeNest" && ( <UsernameForms platform={activeTab} username={usernames[activeTab]} onUsernameChange={handleUsernameChange} />)}
       <LeaderboardTable platform={activeTab} />
       <Footer />
     </div>
