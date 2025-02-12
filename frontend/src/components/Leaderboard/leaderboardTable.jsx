@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { fetchLeaderboardData } from "./api"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrown } from '@fortawesome/free-solid-svg-icons';
 import styles from "./leaderboardTable.module.css"
 import Loader from "../Loader"
 
@@ -12,6 +14,7 @@ export default function LeaderboardTable({ platform }) {
       setLoading(true)
       const leaderboardData = await fetchLeaderboardData(platform)
       const sortedData = leaderboardData.sort((a, b) => b.contestRating - a.contestRating);
+      console.log(sortedData);
       setData(sortedData);
       setLoading(false)
     }
@@ -24,28 +27,35 @@ export default function LeaderboardTable({ platform }) {
 
   return (
     <div className={styles.tableContainer}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Fullname</th>
-            <th>Username</th>
-            <th>Contest Rating</th>
-            <th>Problems Solved</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((entry, index) => (
-            <tr key={entry.username}>
-              <td>{index + 1}</td>
-              <td>{entry.fullname}</td>
-              <td>{entry.username}</td>
-              <td>{entry.contestRating}</td>
-              <td>{entry.totalSolved}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className={styles.table}>
+        <div className={styles.header}>
+          <div className={styles.cell}>Rank</div>
+          <div className={styles.cell}>Fullname</div>
+          <div className={styles.cell}>Username</div>
+          <div className={styles.cell}>Contest Rating</div>
+          <div className={styles.cell}>Problems Solved</div>
+        </div>
+        <div className={styles.body}>
+          {data.map((entry, index) => {
+            const rankClass = [styles.gold, styles.silver, styles.bronze][index] || "";
+            return(
+              <div key={index} className={`${styles.row} ${entry.highlight ? styles.box : ""}`}>  
+                <span className={styles.span2}></span>
+                <span className={styles.span1}></span>
+                <span className={styles.span2}></span>
+                <span className={styles.span1}></span>
+                {index === 0 && <div className={styles.crown} ><FontAwesomeIcon icon={faCrown}/></div>}
+                <div className={`${styles.cell} ${rankClass}`}>{index + 1}</div>
+                <div className={styles.cell}>{entry.fullname}</div>
+                <div className={styles.cell}>{entry.platformUsername}</div>
+                <div className={styles.cell}>{entry.contestRating}</div>
+                <div className={styles.cell}>{entry.totalSolved}</div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
     </div>
   )
 }

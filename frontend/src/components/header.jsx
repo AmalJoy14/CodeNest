@@ -18,7 +18,6 @@ function Header() {
             <li><Link to="/problems" className="navLink">Problems</Link></li>
             <li><Link to="/leaderboard" className="navLink">Leaderboard</Link></li>
             <li><Link to="/discuss" className="navLink">Discuss</Link></li>
-            <li><Link to="/connect" className="navLink">Connect</Link></li>
             <li><Link to="/profile" className="navLink">Profile</Link></li>
             <SignOut/>
           </ul>

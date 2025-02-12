@@ -19,7 +19,6 @@ function Footer() {
             </ul>
             <ul className="linkList2">
               <li><Link to="/discuss" className="link">Discuss</Link></li>
-              <li><Link to="/connect" className="link">Connect</Link></li>
               <li><Link to="/profile" className="link">Profile</Link></li>
             </ul>
           </div>

@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 const validateLeetcodeUsername = async (username) => {
   try {
     const response = await Axios.get(
-      `https://leetcode-stats-api.herokuapp.com/${username}`
+      `https://leetcode-api-faisalshohag.vercel.app/${username}`
     );
-    if (response.data.status === "success") {
+    if (response.data.matchedUser !== null) {
       return true;
     }
 

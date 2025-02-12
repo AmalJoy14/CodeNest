@@ -137,7 +137,7 @@ app.get('/leaderboard/codenest',authenticateToken, async (req, res) => {
             const highlight = user.username === username;
             const totalSolved = user.easySolved + user.mediumSolved + user.hardSolved;
             const contestRating = (user.easySolved * 3) + (user.mediumSolved * 5) + (user.hardSolved * 8);
-            return { username: user.username, fullname: user.fullname, contestRating , totalSolved , highlight };
+            return { username: user.username,platformUsername : user.username, fullname: user.fullname, contestRating , totalSolved , highlight };
         });
         res.status(200).json(codenestData);
     } catch (error) {
@@ -146,7 +146,33 @@ app.get('/leaderboard/codenest',authenticateToken, async (req, res) => {
 });
 
 app.get('/leaderboard/leetcode',authenticateToken, async (req, res) => {
-    res.status(200).json({ message: "LeetCode leaderboard data" });
+    
+    try {
+        const username = req.user.username;
+        const leetcodeUsers = await userModel.find({ leetcodeUsername: { $ne: "" } }, { _id: 0, username: 1, fullname: 1, leetcodeUsername: 1 });
+        const leetcodeUsername = await userModel.findOne({ username: { $eq: username } }, { _id: 0, leetcodeUsername: 1 });
+
+        const leaderboardData = await Promise.all(leetcodeUsers.map(async (user) => {
+            const ratingData = await axios.get(`https://coderme.vercel.app/leetcode/${user.leetcodeUsername}`);
+            const problemsSolvedData = await axios.get(`https://leetcode-api-faisalshohag.vercel.app/${user.leetcodeUsername}`);
+
+            const rating = ratingData.data.rating;
+            const totalSolved = problemsSolvedData.data.totalSolved;
+
+            return {
+                username: user.username,
+                platformUsername: user.leetcodeUsername,
+                fullname: user.fullname,
+                contestRating: rating || 0,
+                totalSolved: totalSolved || 0,
+                highlight: user.leetcodeUsername === leetcodeUsername.leetcodeUsername
+            };
+        }));
+
+        res.status(200).json(leaderboardData);
+    } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+    }
 });
 
 
@@ -163,7 +189,7 @@ app.get('/leaderboard/codeforces',authenticateToken, async (req, res) => {
 
         const leaderboardData = response.data.result.map((userData, index) => ({
             username: codeforcesUsers[index].username, 
-            codeforcesUsername: userData.handle,
+            platformUsername: userData.handle,
             fullname: codeforcesUsers[index].fullname,
             contestRating: userData.rating || 0,
             totalSolved: userData.contribution || 0,

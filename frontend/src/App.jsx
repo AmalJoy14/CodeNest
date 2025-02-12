@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Intro from './components/intro';
 import SignUp from './components/Auth/signup';
@@ -7,7 +7,6 @@ import Home from "./components/Home/home";
 import Leaderboard from "./components/Leaderboard/leaderboard";
 import Problems from "./components/Problems/problems";
 import Discuss from "./components/discuss";
-import Connect from "./components/connect";
 import Profile from "./components/profile";
 import PrivateRoute from './components/Auth/private_route';
 import Topics from './components/Problems/topics';
@@ -24,7 +23,6 @@ const App = () => {
         <Route path="/problems" element={<PrivateRoute><Problems /></PrivateRoute>}/>
         <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>}/>
         <Route path="/discuss" element={<PrivateRoute><Discuss /></PrivateRoute>} />
-        <Route path="/connect" element={<PrivateRoute><Connect /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
         <Route path="/problems/*" element={<Topics />} />
       </Routes>
