@@ -29,7 +29,7 @@ function SignOutModal({ isOpen, onClose}) {
 
   const onSignOut = async () => {
     try {
-      await axios.get("http://localhost:3000/logout", { withCredentials: true })
+      await axios.get("http://localhost:3000/api/logout", { withCredentials: true })
       onClose()
       navigate("/signin")
     } catch (error) {

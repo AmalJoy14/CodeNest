@@ -15,7 +15,7 @@ export default function CommunityStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/homeData")
+        const response = await axios.get("http://localhost:3000/home/homeData")
         const data = response.data
 
         const fetchedStats = [

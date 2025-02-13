@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
     lastSignIn: {
       type: Date,
       default: Date.now,
+    },
+    image: {
+      type: String,
+      default: null,
     }
 });
 

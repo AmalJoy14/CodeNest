@@ -7,7 +7,7 @@ import Home from "./components/Home/home";
 import Leaderboard from "./components/Leaderboard/leaderboard";
 import Problems from "./components/Problems/problems";
 import Discuss from "./components/discuss";
-import Profile from "./components/profile";
+import Profile from "./components/Profile/profile";
 import PrivateRoute from './components/Auth/private_route';
 import Topics from './components/Problems/topics';
 const App = () => {
