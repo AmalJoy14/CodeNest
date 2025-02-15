@@ -53,22 +53,36 @@
   .username {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: left;
+  }
+
+  .fullname{
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    text-align: left;
+    font-weight: 300;
   }
   
   .joinDate {
     color: #b3b3b3;
+    margin-left: 0.5rem;
+    font-size: small;
   }
   
   .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+    margin-bottom: 3rem;
   }
   
   .statItem {
     background-color: #f8f8f8;
     padding: 1rem;
     border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   
   .statTitle {

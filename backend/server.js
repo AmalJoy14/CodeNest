@@ -2,7 +2,6 @@ import express from 'express';
 import connectDB from "./utils/db.js";
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import userModel from './models/user.js';
 import dotenv from 'dotenv';
 import { authenticateToken } from "./Middlewares/authMiddleware.js";
 import authRoutes from "./Routes/authRoutes.js";
@@ -10,7 +9,7 @@ import homeRoutes from "./Routes/homeRoutes.js"
 import leaderboardRoutes from "./Routes/leaderboardRoutes.js";
 import platformRoutes from "./Routes/platformRoutes.js";
 import profileRoutes from "./Routes/profileRoutes.js";
-import upload from "./utils/multerConfig.js";
+import userModel from "./models/user.js";
 dotenv.config();
 
 
@@ -31,8 +30,14 @@ app.use("/leaderboard", leaderboardRoutes);
 app.use("/platform",platformRoutes);
 app.use("/home",homeRoutes);
 app.use("/profile", profileRoutes);
+app.use("/public", express.static("public"));
 
-
+app.get('/profileImage', authenticateToken,async (req, res) => {
+    const username = req.user.username;
+    const userDetails = await userModel.findOne({ username });
+    const imageUrl = userDetails.image ? `http://localhost:3000/public/profiles/${userDetails.image}` : null;
+    res.status(200).json({ imageUrl , username});
+});
 
 app.get('/authenticate', authenticateToken, (req, res) =>{
     res.status(200).json({ message: "Welcome to home page" });

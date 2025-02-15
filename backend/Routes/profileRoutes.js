@@ -13,4 +13,31 @@ router.post('/profileupload', authenticateToken, upload.single("image"), async (
     res.status(200).json({ message: "Profile image uploaded successfully" });
 });
 
+router.get("/profileData", authenticateToken, async (req, res) => {
+    const username = req.user.username;
+    const userDetails = await userModel.findOne({ username });
+    const contestRating = userDetails.easySolved * 3 + userDetails.mediumSolved * 5 + userDetails.hardSolved * 8;
+    const easySolved = userDetails.easySolved;
+    const mediumSolved = userDetails.mediumSolved;
+    const hardSolved = userDetails.hardSolved;
+    const totalSolved = easySolved + mediumSolved + hardSolved;
+
+    //Format the date
+
+    const formattedDate = new Date(userDetails.createdAt).toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
+
+    //Find the rank of the user
+    const users = await userModel.find().sort({ 
+        contestRating: -1,
+    });
+    const rank = users.findIndex(user => user.username === username) + 1;
+
+    const imageUrl = userDetails.image ? `http://localhost:3000/public/profiles/${userDetails.image}` : null;
+    res.status(200).json({imageUrl, username : userDetails.username, fullname : userDetails.fullname , contestRating, totalSolved ,easySolved , mediumSolved , hardSolved, createdAt : formattedDate , rank});
+});
+
 export default router;

@@ -3,7 +3,8 @@ import { fetchLeaderboardData } from "./api"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCrown } from '@fortawesome/free-solid-svg-icons';
 import styles from "./leaderboardTable.module.css"
-import Loader from "../Loader"
+import Loader from "../loader"
+import noProfileImage from "../../assets/noProfileImage.png"
 
 export default function LeaderboardTable({ platform }) {
   const [data, setData] = useState([])
@@ -46,7 +47,10 @@ export default function LeaderboardTable({ platform }) {
                 <span className={styles.span1}></span>
                 {index === 0 && <div className={styles.crown} ><FontAwesomeIcon icon={faCrown}/></div>}
                 <div className={`${styles.cell} ${rankClass}`}>{index + 1}</div>
-                <div className={styles.cell}>{entry.fullname}</div>
+                <div className={`${styles.cell} ${styles.specialcell}`}>
+                  <div className={styles.avatar}><img src={entry.imageUrl || noProfileImage}  onError={(e) => e.target.src = noProfileImage} className={styles.avatarImage} /></div>
+                  <div >{entry.fullname}</div>
+                </div>
                 <div className={styles.cell}>{entry.platformUsername}</div>
                 <div className={styles.cell}>{entry.contestRating}</div>
                 <div className={styles.cell}>{entry.totalSolved}</div>
