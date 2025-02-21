@@ -37,10 +37,17 @@ router.get('/leetcode',authenticateToken, async (req, res) => {
         const leetcodeUsername = await userModel.findOne({ username: { $eq: username } }, { _id: 0, leetcodeUsername: 1 });
 
         const leaderboardData = await Promise.all(leetcodeUsers.map(async (user) => {
-            const ratingData = await axios.get(`https://coderme.vercel.app/leetcode/${user.leetcodeUsername}`);
+            
+            let ratingData = 0;
+            try {
+                const response = await axios.get(`https://coderme.vercel.app/leetcode/${user.leetcodeUsername}`);
+                ratingData = response.data.rating;
+            } catch (error) {
+                ratingData = 0;
+            }
             const problemsSolvedData = await axios.get(`https://leetcode-api-faisalshohag.vercel.app/${user.leetcodeUsername}`);
 
-            const rating = ratingData.data.rating;
+            const rating = ratingData;
             const totalSolved = problemsSolvedData.data.totalSolved;
 
             return {

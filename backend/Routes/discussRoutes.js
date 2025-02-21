@@ -34,21 +34,30 @@ router.post("/createPost", authenticateToken ,async (req, res) => {
 
 
 router.get("/getPosts", authenticateToken, async (req, res) => {
-    try {
+  try {
       const username = req.user.username;
       const user = await userModel.findOne({ username });
       const userId = user._id;
 
       const posts = await Post.find()
-        .populate("userId", "username") 
-        .populate("comments.userId", "username"); 
-  
-      res.status(200).json({posts , userId});
-    } catch (error) {
+          .populate("userId", "username")
+          .populate("comments.userId", "username")
+          .lean();
+
+      // Sort posts by upvotes (likes - dislikes) in descending order
+      const sortedPosts = posts.sort((a, b) => {
+          const aUpvotes = (a.likes?.length || 0) - (a.dislikes?.length || 0);
+          const bUpvotes = (b.likes?.length || 0) - (b.dislikes?.length || 0);
+          return bUpvotes - aUpvotes; 
+      });
+
+      res.status(200).json({ posts: sortedPosts, userId });
+  } catch (error) {
       console.error("Error fetching posts:", error);
       res.status(500).json({ message: "Failed to fetch posts" });
-    }
+  }
 });
+
 
 router.post('/:postId/like',authenticateToken , async (req, res) => {
   try {

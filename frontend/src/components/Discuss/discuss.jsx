@@ -79,7 +79,19 @@ export default function DiscussPage() {
   const handleLike = async (postId) => {
     try {
       await axios.post(`http://localhost:3000/discuss/${postId}/like`, {}, { withCredentials: true });
-      fetchDiscussions();
+      setDiscussions((prevDiscussions) =>
+        prevDiscussions.map((post) =>
+          post._id === postId
+            ? {
+                ...post,
+                likes: post.likes.includes(userId)
+                  ? post.likes.filter((id) => id !== userId)
+                  : [...post.likes, userId],
+                dislikes: post.dislikes.filter((id) => id !== userId), 
+              }
+            : post
+        )
+      );
     } catch (error) {
       console.error("Error while liking post:", error);
     }
@@ -88,7 +100,19 @@ export default function DiscussPage() {
   const handleDislike = async (postId) => {
     try {
       await axios.post(`http://localhost:3000/discuss/${postId}/dislike`, {}, { withCredentials: true });
-      fetchDiscussions();
+      setDiscussions((prevDiscussions) =>
+        prevDiscussions.map((post) =>
+          post._id === postId
+            ? {
+                ...post,
+                dislikes: post.dislikes.includes(userId)
+                  ? post.dislikes.filter((id) => id !== userId)
+                  : [...post.dislikes, userId],
+                likes: post.likes.filter((id) => id !== userId), // Remove like if exists
+              }
+            : post
+        )
+      );
     } catch (error) {
       console.error("Error while disliking post:", error);
     }
@@ -192,14 +216,16 @@ export default function DiscussPage() {
               const hasDisliked = post.dislikes.some((id) => id === userId);
 
               return ( 
-              <li key={post._id} className={styles.discussionItem}>
+              <li key={post._id}  className={styles.discussionItem}>
                 <div className={styles.discussionContentBox}>
-                  <h3 className={styles.discussionTitle}>{post.title}</h3>
-                  <p className={styles.discussionContent}>
-                    {expandedPost === post._id
-                      ? post.content 
-                      : post.content.substring(0, cutoff) + (cutoff < post.content.length ? "..." : "")}
-                  </p>
+                  <div onClick={() => expandedPost !== post._id && (toggleExpand(post._id), setExpandedComment(false))}>
+                    <h3 className={styles.discussionTitle}>{post.title}</h3>
+                    <p className={styles.discussionContent}>
+                      {expandedPost === post._id
+                        ? post.content 
+                        : post.content.substring(0, cutoff) + (cutoff < post.content.length ? "..." : "")}
+                    </p>
+                  </div>
 
                   {expandedPost !== post._id && (
                     <div className={styles.discussionDetails}>
