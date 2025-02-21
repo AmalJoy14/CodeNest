@@ -9,6 +9,8 @@ import homeRoutes from "./Routes/homeRoutes.js"
 import leaderboardRoutes from "./Routes/leaderboardRoutes.js";
 import platformRoutes from "./Routes/platformRoutes.js";
 import profileRoutes from "./Routes/profileRoutes.js";
+import discussRoutes from "./Routes/discussRoutes.js";
+
 import userModel from "./models/user.js";
 dotenv.config();
 
@@ -30,6 +32,7 @@ app.use("/leaderboard", leaderboardRoutes);
 app.use("/platform",platformRoutes);
 app.use("/home",homeRoutes);
 app.use("/profile", profileRoutes);
+app.use("/discuss",discussRoutes);
 app.use("/public", express.static("public"));
 
 app.get('/profileImage', authenticateToken,async (req, res) => {

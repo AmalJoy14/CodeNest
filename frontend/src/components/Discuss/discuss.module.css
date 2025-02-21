@@ -1,0 +1,394 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+    color: black;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(108, 89, 61, 1) 52%, rgba(0, 0, 0, 1) 100%);
+  }
+  
+  .main {
+    flex-grow: 1;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    max-width: 90%;
+    min-width: 90%;
+    position: relative;
+  }
+  
+  .title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #ff9d0b;
+    text-shadow: .1em .1em 0 hsl(60, 2%, 12%);
+  }
+  
+  .discussionBox {
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  
+  .discussionList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .discussionItem {
+    border-bottom: 1px solid #c0c1c4;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    transition: background-color 0.3s ease;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  
+  .discussionItem:last-child {
+    border-bottom: none;
+  }
+  
+  .discussionLink {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .discussionLink:hover {
+    background-color: #f9fafb;
+  }
+  
+  .discussionTitle {
+    font-size: 1.125rem; 
+    font-weight: 600;
+  }
+  
+  .discussionDetails {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4rem;
+    font-size: 0.875rem;
+    margin-top: .5rem;
+    color: #6b7280;
+  }
+
+  .discussionContentBox{
+    width: 90%;
+  }
+
+  .viewDiscussion {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    max-width: 10%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;  /* Aligns items to the top */
+  }
+  
+  /*//////////////////////////////////////////*/
+
+  
+  
+  .newTopicSection {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  
+  
+  
+  .formButtons {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: .5rem;
+  }
+  
+  
+  .btnPrimary {
+    background-color: #ffa116;
+    width: 40px;
+    height: 40px;
+    color: black;
+    font-size: medium;
+    font-weight: 600;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    left: -35px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .btnPrimary:hover {
+    background-color: #ff8c00;
+  }
+  
+  .btn{
+    background-color: #ffa116;
+    color: black;
+    font-size: medium;
+    font-weight: 400;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .submit:hover {
+    background-color: #ff8c00;
+  }
+
+  .btnSecondary {
+    background-color: #f0f0f0;
+    color: #000000;
+  }
+
+  .newTopicForm {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+
+  .input{
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+  .textarea {
+    min-height: 100px;
+    resize: none;
+    scrollbar-width: thin;
+    outline: none;
+  }
+
+  .discussionContent{
+    white-space: pre-wrap;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;  
+    max-width: 100%; 
+  }
+  
+  .caretDown{
+    border: none;
+    background-color: transparent;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffa116;
+    cursor: pointer;
+  }
+
+  .selectedPostOptions{
+    margin-top: 1rem;
+    display: flex;
+    gap: 4rem;
+  }
+
+  .voteSection{
+    width: 100px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+  }
+  .upvoteBtn , .downvoteBtn , .activeDislike , .activeLike{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    color: #666666;
+  }
+  .upvoteBtn , .activeLike{
+    border-radius: 5px 0px 0px 5px;
+    background-color: #E2E2E2;
+  }
+  .downvoteBtn , .activeDislike{
+    border-radius: 0px 5px 5px 0px;
+    background-color: #E2E2E2;
+  }
+
+  .activeLike{
+    color: green;
+  }
+
+  .activeDislike{
+    color: red;
+  }
+
+  .commentBtn{
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border:none;
+    border-radius: 5px;
+    background-color: #E2E2E2;
+    color: #666666;
+    height: 20px;
+  }
+
+  .selectedUserBox{
+    color: #666666;
+    height: 20px;
+    font-size: small;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .createdDateBox{
+    color: #666666;
+    height: 20px;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .commentInputBox{
+    position: relative;
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #f0ffff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    top: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .commentInput{
+    padding: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    resize: none;
+    scrollbar-width: thin;
+    outline: none;
+    margin: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .commentButtons{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .7rem;
+    bottom: 4%;
+    right: 1rem;
+  }
+
+  .commentBoxBtn{
+    background-color: #ffa116;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 80px;
+  }
+
+  .commentBoxBtn:hover{
+    background-color: #ff8c00;
+  }
+
+  .commentCancelBtn{
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    color: #666666;
+    width: 80px;
+  }
+  
+  .commentItem{
+    position: relative;
+    display: flex;
+    gap: .5rem;
+    margin-top: .7rem;
+    padding: 1rem;
+    background-color: #f0ffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 5px;
+  }
+
+  strong{
+    color: #448dfa;
+    line-height: 1.2;
+  }
+
+  .commentItem > p{
+    color: #000000;
+    font-size: medium;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;  
+    max-width: 75%; 
+  }
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    background-color:#b1b1b1;
+    border: 1px solid #ffa116;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: .5rem;
+  }
+
+  .avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 50%;
+  }
+
+  .daysAgo{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #666666;
+    font-size: small;
+  }

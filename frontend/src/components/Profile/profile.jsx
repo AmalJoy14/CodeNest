@@ -1,6 +1,6 @@
 import { useRef, useState , useEffect} from "react";
-import Header from "../header";
-import Footer from "../footer";
+import Header from "../Header";
+import Footer from "../Footer";
 import styles from "./profile.module.css";
 import axios from "axios";
 import noProfileImage from "../../assets/noProfileImage.png";
