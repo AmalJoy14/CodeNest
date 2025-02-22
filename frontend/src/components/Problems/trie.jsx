@@ -1,14 +1,14 @@
 import Header from '../header';
-import Footer from '../footer';
+import Footer from '..//footer';
 import styles from './topics.module.css';
 import { Link } from 'react-router-dom';
-import camicon from '../../assets/cam.svg'
+import camicon from '../../assets/cam.svg';
+
 export default function Trie() {
   const questions = [
-    
-        { "id": 1, "title": "Implement Trie (Prefix Tree)", "difficulty": "Medium", "acceptance": "61%" },
-        { "id": 2, "title": "Design Add And Search Words Data Structure", "difficulty": "Medium", "acceptance": "64%" },
-        { "id": 3, "title": "Word Search II", "difficulty": "Hard", "acceptance": "47%" }
+    { id: 1, title: 'Implement Trie (Prefix Tree)', difficulty: 'Medium', acceptance: '61%', solutionLink: 'https://youtu.be/oobqoCJlHA0' },
+    { id: 2, title: 'Design Add And Search Words Data Structure', difficulty: 'Medium', acceptance: '64%', solutionLink: 'https://youtu.be/BTf05gs_8iU' },
+    { id: 3, title: 'Word Search II', difficulty: 'Hard', acceptance: '47%', solutionLink: 'https://youtu.be/asbcE9mZz_U' },
   ];
 
   const getDifficultyClass = (difficulty) => {
@@ -26,7 +26,7 @@ export default function Trie() {
 
   return (
     <div className={styles.container}>
-      <Header /> 
+      <Header />
       <main className={styles.main}>
         <h1 className={styles.title}>Tries</h1>
         <div className={styles.tableContainer}>
@@ -37,7 +37,7 @@ export default function Trie() {
                 <th className={styles.th}>Title</th>
                 <th className={styles.th}>Difficulty</th>
                 <th className={styles.th}>Acceptance</th>
-                <th className= {styles.th}>Solution</th>
+                <th className={styles.th}>Solution</th>
               </tr>
             </thead>
             <tbody className={styles.tbody}>
@@ -45,7 +45,7 @@ export default function Trie() {
                 <tr key={question.id}>
                   <td className={styles.td}>{question.id}</td>
                   <td className={styles.td}>
-                    <Link className={styles.link}to={`/problems/Trie/${question.title.toLowerCase().replace(/ /g, '-')}`}>
+                    <Link className={styles.link} to={`/problems/Trie/${question.title.toLowerCase().replace(/ /g, '-')}`}>
                       {question.title}
                     </Link>
                   </td>
@@ -54,7 +54,13 @@ export default function Trie() {
                   </td>
                   <td className={styles.td}>{question.acceptance}</td>
                   <td className={styles.sol}>
-                    <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    <a 
+                      href={question.solutionLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    </a>
                   </td>
                 </tr>
               ))}

@@ -6,12 +6,12 @@ import camicon from '../../assets/cam.svg';
 
 export default function Intervals() {
   const questions = [
-    { id: 1, title: 'Insert Interval', difficulty: 'Medium', acceptance: '70%' },
-    { id: 2, title: 'Merge Intervals', difficulty: 'Medium', acceptance: '68%' },
-    { id: 3, title: 'Non Overlapping Intervals', difficulty: 'Medium', acceptance: '65%' },
-    { id: 4, title: 'Meeting Rooms', difficulty: 'Easy', acceptance: '75%' },
-    { id: 5, title: 'Meeting Rooms II', difficulty: 'Medium', acceptance: '63%' },
-    { id: 6, title: 'Minimum Interval to Include Each Query', difficulty: 'Hard', acceptance: '58%' }
+    { id: 1, title: 'Insert Interval', difficulty: 'Medium', acceptance: '70%', solutionLink: 'https://youtu.be/A8NUOmlwOlM' },
+    { id: 2, title: 'Merge Intervals', difficulty: 'Medium', acceptance: '68%', solutionLink: 'https://youtu.be/44H3cEC2fFM' },
+    { id: 3, title: 'Non Overlapping Intervals', difficulty: 'Medium', acceptance: '65%', solutionLink: 'https://youtu.be/nONCGxWoUfM' },
+    { id: 4, title: 'Meeting Rooms', difficulty: 'Easy', acceptance: '75%', solutionLink: 'https://youtu.be/PaJxqZVPhbg' },
+    { id: 5, title: 'Meeting Rooms II', difficulty: 'Medium', acceptance: '63%', solutionLink: 'https://youtu.be/FdzJmTCVyJU' },
+    { id: 6, title: 'Minimum Interval to Include Each Query', difficulty: 'Hard', acceptance: '58%', solutionLink: 'https://youtu.be/5hQ5WWW5awQ' },
   ];
 
   const getDifficultyClass = (difficulty) => {
@@ -57,7 +57,13 @@ export default function Intervals() {
                   </td>
                   <td className={styles.td}>{question.acceptance}</td>
                   <td className={styles.sol}>
-                    <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    <a 
+                      href={question.solutionLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    </a>
                   </td>
                 </tr>
               ))}

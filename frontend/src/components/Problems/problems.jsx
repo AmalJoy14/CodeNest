@@ -1,7 +1,7 @@
-import Header from "../header"
-import Footer from "../footer"
-import styles from "./problems.module.css"
-import { Link } from "react-router-dom"
+import Header from "../header";
+import Footer from "../footer";
+import styles from "./problems.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Problems() {
   const topics = [
@@ -23,7 +23,13 @@ export default function Problems() {
     { id: 16, title: "Intervals", link: "./intervals", solved: "0 / 7" },
     { id: 17, title: "Bit Manipulation", link: "./bit-manipulation", solved: "0 / 0" },
     { id: 18, title: "Math and geometry", link: "./math-geometry", solved: "0 / 0" },
-  ]
+  ];
+
+  const navigate = useNavigate();
+
+  const handleRowClick = (link) => {
+    navigate(link);
+  };
 
   return (
     <div className={styles.container}>
@@ -41,13 +47,13 @@ export default function Problems() {
             </thead>
             <tbody className={styles.tbody}>
               {topics.map((topic) => (
-                <tr key={topic.id}>
+                <tr
+                  key={topic.id}
+                  className={styles.row}
+                  onClick={() => handleRowClick(topic.link)}
+                >
                   <td className={styles.td}>{topic.id}</td>
-                  <td className={styles.td}>
-                    <Link to={topic.link} className={styles.link}>
-                      {topic.title}
-                    </Link>
-                  </td>
+                  <td className={styles.cell}>{topic.title}</td>
                   <td className={styles.td}>{topic.solved}</td>
                 </tr>
               ))}
@@ -57,6 +63,5 @@ export default function Problems() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
-

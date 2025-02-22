@@ -6,13 +6,13 @@ import camicon from '../../assets/cam.svg';
 
 export default function BitManipulation() {
   const questions = [
-    { id: 1, title: 'Single Number', difficulty: 'Easy', acceptance: '78%' },
-    { id: 2, title: 'Number of 1 Bits', difficulty: 'Easy', acceptance: '82%' },
-    { id: 3, title: 'Counting Bits', difficulty: 'Easy', acceptance: '80%' },
-    { id: 4, title: 'Reverse Bits', difficulty: 'Easy', acceptance: '77%' },
-    { id: 5, title: 'Missing Number', difficulty: 'Easy', acceptance: '81%' },
-    { id: 6, title: 'Sum of Two Integers', difficulty: 'Medium', acceptance: '65%' },
-    { id: 7, title: 'Reverse Integer', difficulty: 'Medium', acceptance: '63%' }
+    { id: 1, title: 'Single Number', difficulty: 'Easy', acceptance: '78%', solutionLink: 'https://youtu.be/fMSJSS7eO1w' },
+    { id: 2, title: 'Number of 1 Bits', difficulty: 'Easy', acceptance: '82%', solutionLink: 'https://youtu.be/BJnMZNwUk1M' },
+    { id: 3, title: 'Counting Bits', difficulty: 'Easy', acceptance: '80%', solutionLink: 'https://youtu.be/T41rL0L3Pnw' },
+    { id: 4, title: 'Reverse Bits', difficulty: 'Easy', acceptance: '77%', solutionLink: 'https://youtu.be/ljz85bxOYJ0' },
+    { id: 5, title: 'Missing Number', difficulty: 'Easy', acceptance: '81%', solutionLink: 'https://youtu.be/jIaA8boiG1s' },
+    { id: 6, title: 'Sum of Two Integers', difficulty: 'Medium', acceptance: '65%', solutionLink: 'https://youtu.be/g9YQyYi4IQQ' },
+    { id: 7, title: 'Reverse Integer', difficulty: 'Medium', acceptance: '63%', solutionLink: 'https://youtu.be/1vZswirL8Y8' },
   ];
 
   const getDifficultyClass = (difficulty) => {
@@ -58,7 +58,13 @@ export default function BitManipulation() {
                   </td>
                   <td className={styles.td}>{question.acceptance}</td>
                   <td className={styles.sol}>
-                    <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    <a 
+                      href={question.solutionLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    </a>
                   </td>
                 </tr>
               ))}
