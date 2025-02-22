@@ -3,7 +3,7 @@ import Footer from "../footer";
 import styles from "./problems.module.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Problems() {
+ function Problems() {
   const topics = [
     { id: 1, title: "Array / String", link: "./array-string", solved: "0 / 6" },
     { id: 2, title: "Two Pointers", link: "./two-pointers", solved: "0 / 7" },
@@ -65,3 +65,5 @@ export default function Problems() {
     </div>
   );
 }
+
+export default Problems;
