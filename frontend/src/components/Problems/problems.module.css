@@ -12,7 +12,9 @@
   padding: 2rem 1rem;
   min-width: 90%;
 }
-
+.row{
+  color: #ffa116;
+}
 .title {
   font-size: 1.875rem;
   font-weight: bold;
@@ -30,6 +32,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  
 }
 
 .thead {
@@ -43,7 +46,7 @@
 }
 
 .th-topic {
-  padding-left: 1.5rem; /* Adjust this value as needed */
+  padding-left: 1.5rem; 
 }
 
 .tbody tr {
@@ -52,8 +55,10 @@
 }
 
 .tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: rgba(255, 161, 22, 0.2); 
+  
 }
+
 
 .td {
   padding: 0.75rem;
@@ -62,6 +67,7 @@
 
 .td-topic {
   padding-left: 1.5rem; /* Adjust this value as needed */
+  color: #ffa116;
 }
 
 .link {
@@ -73,4 +79,9 @@
 
 .link:hover {
   color: #cc8500;
+}
+
+.cell{
+  color: #ffa116;
+  font-weight: bold;
 }

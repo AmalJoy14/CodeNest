@@ -2,12 +2,13 @@ import Header from '../header';
 import Footer from '../footer';
 import styles from './topics.module.css';
 import { Link } from 'react-router-dom';
-import camicon from '../../assets/cam.svg'
+import camicon from '../../assets/cam.svg';
+
 export default function TwoPointers() {
   const questions = [
-    { id: 1, title: 'Valid Palindrome', difficulty: 'Easy', acceptance: '65%' },
-    { id: 2, title: 'Is Subsequence', difficulty: 'Easy', acceptance: '70%' },
-    { id: 3, title: 'Two Sum II - Input Array Is Sorted', difficulty: 'Medium', acceptance: '55%' },
+    { id: 1, title: 'Valid Palindrome', difficulty: 'Easy', acceptance: '65%', solutionLink: 'https://youtu.be/jJXJ16kPFWg' },
+    { id: 2, title: 'Two Sum II - Input Array Is Sorted', difficulty: 'Medium', acceptance: '55%', solutionLink: 'https://youtu.be/cQ1Oz4ckceM' },
+    { id: 3, title: '3Sum', difficulty: 'Medium', acceptance: '50%', solutionLink: 'https://youtu.be/jzZsG8n2R9A' },
   ];
 
   const getDifficultyClass = (difficulty) => {
@@ -36,7 +37,7 @@ export default function TwoPointers() {
                 <th className={styles.th}>Title</th>
                 <th className={styles.th}>Difficulty</th>
                 <th className={styles.th}>Acceptance</th>
-                <th className= {styles.th}>Solution</th>
+                <th className={styles.th}>Solution</th>
               </tr>
             </thead>
             <tbody className={styles.tbody}>
@@ -44,7 +45,7 @@ export default function TwoPointers() {
                 <tr key={question.id}>
                   <td className={styles.td}>{question.id}</td>
                   <td className={styles.td}>
-                    <Link className={styles.link}to={`/problems/array-string/${question.title.toLowerCase().replace(/ /g, '-')}`}>
+                    <Link className={styles.link} to={`/problems/two-pointers/${question.title.toLowerCase().replace(/ /g, '-')}`}>
                       {question.title}
                     </Link>
                   </td>
@@ -53,7 +54,13 @@ export default function TwoPointers() {
                   </td>
                   <td className={styles.td}>{question.acceptance}</td>
                   <td className={styles.sol}>
-                    <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    <a 
+                      href={question.solutionLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <img src={camicon} alt="Camera icon" className={styles.camera} width="24" height="24" />
+                    </a>
                   </td>
                 </tr>
               ))}
