@@ -1,5 +1,5 @@
-import  Header  from '../Header'
-import  Footer  from '../Footer'
+import  Header  from '../header'
+import  Footer  from '../footer'
 import React, { useState } from "react"
 import UsernameForms from "./usernameForms"
 import LeaderboardTable from "./leaderboardTable.jsx"

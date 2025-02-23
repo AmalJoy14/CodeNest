@@ -9,7 +9,8 @@ import Problems from "./components/Problems/problems";
 import Discuss from "./components/Discuss/discuss";
 import Profile from "./components/Profile/profile";
 import PrivateRoute from './components/Auth/private_route';
-import Topics from './components/Problems/topics';
+import TopicPage from './components/Problems/topicPage';
+import QuestionPage from './components/Problems/questionPage';
 const App = () => {
   return (
     <Router>
@@ -20,11 +21,12 @@ const App = () => {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/home" element={<Home />} />
 
-        <Route path="/problems" element={<PrivateRoute><Problems /></PrivateRoute>}/>
         <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>}/>
         <Route path="/discuss" element={<PrivateRoute><Discuss /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
-        <Route path="/problems/*" element={<Topics />} />
+        <Route path="/problems" element={<PrivateRoute><Problems /></PrivateRoute>}/>
+        <Route path="/problems/:topicId" element={<PrivateRoute><TopicPage /></PrivateRoute>} />
+        <Route path="/problems/:topicId/:questionId" element={<PrivateRoute><QuestionPage /></PrivateRoute>} />
       </Routes>
     </Router>
   );

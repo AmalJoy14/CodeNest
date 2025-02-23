@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  .leftPanel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #333;
+  }
+  
+  .rightPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .problemHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .difficulty {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  
+  .Easy {
+    background-color: #2cbb5d;
+  }
+  
+  .Medium {
+    background-color: #ffa116;
+  }
+  
+  .Hard {
+    background-color: #ef4743;
+  }
+  
+  .acceptanceRate {
+    color: #8a8a8a;
+    font-size: 14px;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .editorContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background-color: #2a2a2a;
+  }
+  
+  .button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+  
+  .runButton {
+    background-color: #4a4a4a;
+    color: white;
+  }
+  
+  .runButton:hover {
+    background-color: #5a5a5a;
+  }
+  
+  .submitButton {
+    background-color: #2cbb5d;
+    color: white;
+  }
+  
+  .submitButton:hover {
+    background-color: #25a350;
+  }
+  
+  .testcaseSection {
+    padding: 20px;
+    background-color: #2a2a2a;
+  }
+  
+  .testcaseHeader {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .testcaseContent {
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  .testcaseItem {
+    margin-bottom: 10px;
+  }
+  
+  .testcaseLabel {
+    color: #8a8a8a;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .testcaseValue {
+    font-family: monospace;
+    word-break: break-all;
+  }
+  
+  
