@@ -11,7 +11,7 @@ export default function TopicPage() {
   const { topicId } = useParams();
 
   const topic = topicsData.find(t => 
-    t.title.toLowerCase().replace(/ /g, '-') === topicId
+    t.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-") === topicId
   );
 
 
@@ -51,16 +51,14 @@ navigate(link);
             </thead>
             <tbody>
               {topic.problems.map((problem) => (
-                <tr onClick={() => handleRowClick(`/problems/${topicId}/${problem.title.toLowerCase().replace(/ /g, "-")}`)} key={problem.id}>
+                <tr onClick={() => handleRowClick(`/problems/${topicId}/${problem.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-")}`)} key={problem.id}>
                   <td>{problem.id}</td>
                   <td>
-                    {/* <Link className={styles.link} to={`/problems/${topicId}/${problem.title.toLowerCase().replace(/ /g, '-')}`}> */}
                       {problem.title}
-                    {/* </Link> */}
                   </td>
                   <td className={getDifficultyClass(problem.difficulty)}>{problem.difficulty}</td>
                   <td className={styles.sol}>
-                  <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className = {styles.camera} icon={faVideo} /></a>
+                  <a href={problem.solutionLink ? problem.solutionLink : "https://www.google.com"} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className = {styles.camera} icon={faVideo} /></a>
                    </td>
                 </tr>
               ))}

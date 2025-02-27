@@ -1,19 +1,21 @@
 .container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     background-color: #1a1a1a;
     color: #ffffff;
   }
   
   .leftPanel {
-    flex: 1;
+    flex: 0.9;
     padding: 20px;
     overflow-y: auto;
     border-right: 1px solid #333;
+    position: relative;
   }
   
   .rightPanel {
-    flex: 1;
+    flex: 1.1;
     display: flex;
     flex-direction: column;
   }
@@ -22,7 +24,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    
   }
   
   .title {
@@ -35,6 +38,13 @@
     border-radius: 12px;
     font-size: 14px;
   }
+
+  .solved{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
   
   .Easy {
     background-color: #2cbb5d;
@@ -45,7 +55,7 @@
   }
   
   .Hard {
-    background-color: #ef4743;
+    background-color: #e6231f;
   }
   
   .acceptanceRate {
@@ -57,19 +67,31 @@
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 20px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .editorContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1a1a1a;
   }
   
   .buttonContainer {
     display: flex;
+    justify-content: space-between;
     gap: 10px;
     padding: 10px 20px;
     background-color: #2a2a2a;
+  }
+
+  .btnGrp{
+    display: flex;
+    gap: 10px;
   }
   
   .button {
@@ -102,17 +124,43 @@
   .testcaseSection {
     padding: 20px;
     background-color: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
   
   .testcaseHeader {
     font-size: 16px;
     margin-bottom: 15px;
   }
+
+  .constraint{
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+  }
+
+  .constraints {
+    padding-left: 1.2rem;
+    list-style-type: disc;
+  }
+  
+  .constraints li {
+    font-size: 1rem;
+    color: #f5efef;
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+    font-size: 14px;
+  }
   
   .testcaseContent {
     background-color: #1a1a1a;
     padding: 15px;
     border-radius: 4px;
+  }
+
+  .testcaseContent img , .problemImage{
+    max-width: 100%;
   }
   
   .testcaseItem {
@@ -127,7 +175,37 @@
   
   .testcaseValue {
     font-family: monospace;
-    word-break: break-all;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   
+  .notestcaseSection{
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 4px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  
+
+  .language {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
   
+  .dropdown {
+    padding: 6px ;
+    border: 1px solid #e3dddd;
+    border-radius: 4px;
+    background-color: #f3efef;
+    font-size: 12px;
+  }
+  
+  .dropdown:focus {
+    outline: none;
+    border-color: none;
+  }
+

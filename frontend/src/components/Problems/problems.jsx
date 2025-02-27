@@ -30,7 +30,7 @@ function Problems() {
                 <tr
                   key={topic.id}
                   className={styles.row}
-                  onClick={() => handleRowClick(`./${topic.title.toLowerCase().replace(/ /g, "-")}`)}
+                  onClick={() => handleRowClick(`./${topic.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-")}`)}
                 >
                   <td className={styles.td}>{topic.id}</td>
                   <td className={styles.cell}>{topic.title}</td>
