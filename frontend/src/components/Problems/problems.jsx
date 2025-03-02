@@ -26,6 +26,7 @@ function Problems() {
               </tr>
             </thead>
             <tbody className={styles.tbody}>
+
               {topicsData.map((topic) => (
                 <tr
                   key={topic.id}

@@ -2,28 +2,13 @@ import { useState } from "react"
 import styles from "./QuestionPage.module.css"
 import CodeEditor from "./codeEditor"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleCheck , faList} from "@fortawesome/free-solid-svg-icons"
+import { faCircleCheck , faVideo , faXmark} from "@fortawesome/free-solid-svg-icons"
 import topicsData from "./Topics/topicsData"
 import { useParams } from "react-router-dom"
 
-const sampleQuestion = {
-  title: "Two Sum",
-  difficulty: "Easy",
-  description: `Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-    You may assume that each input would have exactly one solution, and you may not use the same element twice.
-    You can return the answer in any order.`,
-  defaultCode: ``,
-  testCases: [
-    {
-      input: "nums = [2,7,11,15], target = 9",
-      output: "[0,1]",
-      explanation: "Because nums[0] + nums[1] == 9, we return [0, 1].",
-    },
-  ],
-}
-
 export default function QuestionPage() {
   const { topicId, questionId } = useParams();
+  const [videoLink, setVideoLink] = useState(null);
 
 
   const topic = topicsData.find(t => 
@@ -36,9 +21,9 @@ export default function QuestionPage() {
   );
 
 
-  const [code, setCode] = useState(sampleQuestion.defaultCode)
+  const [code, setCode] = useState(problem.defaultCode)
   const [testResults, setTestResults] = useState(null)
-  const [isSolved, setIsSolved] = useState(false)
+  const [isSolved, setIsSolved] = useState(true)
   const [language, setLanguage] = useState('javascript');
 
   const languages = [
@@ -111,6 +96,7 @@ export default function QuestionPage() {
             <li key={index}>{constraint}</li>
           ))}
         </ul>
+        <h3 className={styles.solution}>Solution : <FontAwesomeIcon className={styles.camera} icon={faVideo} onClick={(e) => (e.stopPropagation(), setVideoLink(problem.solutionLink))} style={{ cursor: "pointer" }} /></h3>
       </div>
 
       <div className={styles.rightPanel}>
@@ -168,6 +154,16 @@ export default function QuestionPage() {
         
         
       </div>
+      {videoLink && (
+        <div className={styles.videoOverlay}>
+          <div className={styles.videoContainer}>
+            <button className={styles.closeButton} onClick={() => setVideoLink(null)}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+            <iframe width="800" height="450" src={`${videoLink}?rel=0`}  title="Solution Video"  frameBorder="0" allowFullScreen></iframe>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

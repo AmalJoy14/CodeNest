@@ -8,7 +8,7 @@ const topicsData = [
         id: 1,
         title: "Merge Strings Alternately",
         difficulty: "Easy",
-        solutionLink: "https://www.youtube.com/watch?v=LECWOvTo-Sc",
+        solutionLink: "https://www.youtube.com/embed/LECWOvTo-Sc" ,
         description: `You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.\n\nReturn the merged string.`,
         testCases: [
           {
@@ -42,7 +42,7 @@ const topicsData = [
         id: 2,
         title: "Greatest Common Divisor of Strings",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/i5I_wrbUdzM",
         description: `For two strings s and t, we say "t divides s" if and only if s = t + t + ... + t (i.e., t is concatenated with itself one or more times).\n\nGiven two strings str1 and str2, return the largest string x such that x divides both str1 and str2.`,
         testCases: [
           {
@@ -76,7 +76,7 @@ const topicsData = [
         id: 3,
         title: "Kids With the Greatest Number of Candies",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/xBpYKQzjjnM",
         description: `There are n kids with candies. You are given an integer array candies, where each candies[i] represents the number of candies the ith kid has, and an integer extraCandies, denoting the number of extra candies that you have.\n\nReturn a boolean array result of length n, where result[i] is true if, after giving the ith kid all the extraCandies, they will have the greatest number of candies among all the kids, or false otherwise.\n\nNote that multiple kids can have the greatest number of candies.`,
         testCases: [
           {
@@ -111,7 +111,7 @@ const topicsData = [
         id: 4,
         title: "Can Place Flowers",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/ZGxqqjljpUI",
         description: `You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.\n\nGiven an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.`,
         testCases: [
           {
@@ -140,7 +140,7 @@ const topicsData = [
         id: 5,
         title: "Reverse Vowels of a String",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/94RdOzbXvHM",
         description: `Given a string s, reverse only all the vowels in the string and return it.\n\nThe vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.`,
         testCases: [
           {
@@ -167,7 +167,7 @@ const topicsData = [
         id: 6,
         title: "Reverse Words in a String",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/-ggUxN7bFjU",
         description: `Given an input string s, reverse the order of the words.\n\nA word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.\n\nReturn a string of the words in reverse order concatenated by a single space.\n\nNote that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.`,
         testCases: [
           {
@@ -201,7 +201,7 @@ const topicsData = [
         id: 7,
         title: "Product of Array Except Self",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/bNvIQI2wAjk",
         description: `Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].\n\nThe product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.\n\nYou must write an algorithm that runs in O(n) time and without using the division operation.`,
         testCases: [
           {
@@ -233,7 +233,7 @@ const topicsData = [
         id: 8,
         title: "Increasing Triplet Subsequence",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/yEFlGWOVH8g",
         description: `Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exist, return false.`,
         testCases: [
           {
@@ -266,7 +266,7 @@ const topicsData = [
         id: 9,
         title: "String Compression",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/cAB15h6-sWA?si=wZ8TApx-Wt7PvnJC",
         description: `Given an array of characters chars, compress it using the following algorithm:\n\n- Begin with an empty string s.\n- For each group of consecutive repeating characters in chars:\n  - If the group's length is 1, append the character to s.\n  - Otherwise, append the character followed by the group's length.\n\nThe compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.\n\nAfter modifying the input array, return its new length.\n\nYou must write an algorithm that uses only constant extra space.`,
         testCases: [
           {
@@ -306,7 +306,7 @@ const topicsData = [
         id: 1,
         title: "Move Zeroes",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/aayNRwUN3Do",
         description: `Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.\n\nYou must do this in-place without making a copy of the array.`,
         testCases: [
           {
@@ -333,7 +333,7 @@ const topicsData = [
         id: 2,
         title: "Is Subsequence",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/99RVfqklbCE",
         description: `Given two strings s and t, return true if s is a subsequence of t, or false otherwise.\n\nA subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters.`,
         testCases: [
           {
@@ -362,7 +362,7 @@ const topicsData = [
         id: 3,
         title: "Container With Most Water",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/UuiTKBwPgAo",
         description: `You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).\n\nFind two lines that together with the x-axis form a container, such that the container contains the most water.\n\nReturn the maximum amount of water a container can store.\n\nNotice that you may not slant the container.`,
         testCases: [
           {
@@ -391,7 +391,7 @@ const topicsData = [
         id: 4,
         title: "Max Number of K-Sum Pairs",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/FevSHchkCeo?si=ktLm47cxTUzbSEia",
         description: `You are given an integer array nums and an integer k.\n\nIn one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.\n\nReturn the maximum number of operations you can perform on the array.`,
         testCases: [
           {
@@ -425,7 +425,7 @@ const topicsData = [
         id: 1,
         title: "Maximum Average Subarray I",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/UdUUnoiLkPg?si=NBADDgA7vwm09y_y",
         description: `You are given an integer array nums consisting of n elements, and an integer k.\n\nFind a contiguous subarray whose length is equal to k that has the maximum average value and return this value. Any answer with a calculation error less than 10⁻⁵ will be accepted.`,
         testCases: [
           {
@@ -453,7 +453,7 @@ const topicsData = [
         id: 2,
         title: "Maximum Number of Vowels in a Substring of Given Length",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/kEfPSzgL-Ss",
         description: `Given a string s and an integer k, return the maximum number of vowel letters in any substring of s with length k.\n\nVowel letters in English are 'a', 'e', 'i', 'o', and 'u'.`,
         testCases: [
           {
@@ -487,7 +487,7 @@ const topicsData = [
         id: 3,
         title: "Max Consecutive Ones III",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/3E4JBHSLpYk",
         description: `Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.`,
         testCases: [
           {
@@ -515,7 +515,7 @@ const topicsData = [
         id: 4,
         title: "Longest Subarray of 1's After Deleting One Element",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/AmtU7Qe0QZU",
         description: `Given a binary array nums, you should delete one element from it. Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.`,
         testCases: [
           {
@@ -555,7 +555,7 @@ const topicsData = [
         id: 1,
         title: "Find the Highest Altitude",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Q6oU9wdaaF4",
         description: `There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with an altitude of 0.\n\nYou are given an integer array gain of length n, where gain[i] is the net gain in altitude between points i and i + 1 for all (0 <= i < n). Return the highest altitude reached during the trip.`,
         testCases: [
           {
@@ -583,7 +583,7 @@ const topicsData = [
         id: 2,
         title: "Find Pivot Index",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/u89i60lYx8U",
         description: `Given an array of integers nums, calculate the pivot index of this array.\n\nThe pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the right of the index.\n\nIf the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.\n\nReturn the leftmost pivot index. If no such index exists, return -1.`,
         testCases: [
           {
@@ -622,7 +622,7 @@ const topicsData = [
         id: 1,
         title: "Find the Difference of Two Arrays",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/a4wqKR-znBE",
         description: `Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where:\n\n- answer[0] is a list of all distinct integers in nums1 which are not present in nums2.\n- answer[1] is a list of all distinct integers in nums2 which are not present in nums1.\n\nNote that the integers in the lists may be returned in any order.`,
         testCases: [
           {
@@ -649,7 +649,7 @@ const topicsData = [
         id: 2,
         title: "Unique Number of Occurrences",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/vuYlOjpqxXs",
         description: `Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.`,
         testCases: [
           {
@@ -680,7 +680,7 @@ const topicsData = [
         id: 3,
         title: "Determine if Two Strings Are Close",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/aNfMQ4qMBes",
         description: "Two strings are considered close if you can attain one from the other using the following operations:\n   1. Swap any two existing characters. (e.g., 'abcde' -> 'aecdb')\n   2. Transform every occurrence of one existing character into another existing character and vice versa. (e.g., 'aacabb' -> 'bbcbaa')\n\nYou can use the operations on either string as many times as necessary.\n\nGiven two strings, word1 and word2, return true if word1 and word2 are close, and false otherwise.",
         testCases: [
           {
@@ -712,7 +712,7 @@ const topicsData = [
         id: 4,
         title: "Equal Row and Column Pairs",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/dDmyczX6bFc",
         description: "Given a 0-indexed n x n integer matrix grid, return the number of pairs (ri, cj) such that row ri and column cj are equal.\nA row and column pair is considered equal if they contain the same elements in the same order (i.e., an equal array).",
         testCases: [
           {
@@ -743,13 +743,13 @@ const topicsData = [
   {
     id: 6,
     title: "Stack",
-    total: 3,
+    total: 5,
     problems: [
       {
         id: 1,
         title: "Valid Parentheses",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/WTzjTskDFMg",
         description: `Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.\n\nAn input string is valid if:\n1. Open brackets must be closed by the same type of brackets.\n2. Open brackets must be closed in the correct order.\n3. Every close bracket has a corresponding open bracket of the same type.`,
         testCases: [
           {
@@ -788,7 +788,7 @@ const topicsData = [
         id: 2,
         title: "Evaluate Reverse Polish Notation",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/iu0082c4HDE",
         description: `You are given an array of strings tokens that represents an arithmetic expression in Reverse Polish Notation.\n\nEvaluate the expression. Return an integer that represents the value of the expression.\n\nNote that:\n- The valid operators are '+', '-', '*', and '/'.\n- Each operand may be an integer or another expression.\n- The division between two integers always truncates toward zero.\n- There will not be any division by zero.\n- The input represents a valid arithmetic expression in reverse polish notation.\n- The answer and all the intermediate calculations can be represented in a 32-bit integer.`,
         testCases: [
           {
@@ -822,7 +822,7 @@ const topicsData = [
         id: 3,
         title: "Removing Stars From a String",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/pRyFZIaKegA",
         description: "You are given a string s, which contains stars '*'.\nIn one operation, you can:\n1. Choose a star in s.\n2. Remove the closest non-star character to its left, as well as remove the star itself.\nReturn the string after all stars have been removed.\n\nNote:\n- The input will be generated such that the operation is always possible.\n- It can be shown that the resulting string will always be unique.",
         testCases: [
           {
@@ -850,7 +850,7 @@ const topicsData = [
         id: 4,
         title: "Asteroid Collision",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/LN7KjRszjk4",
         description: "We are given an array asteroids of integers representing asteroids in a row. The indices of the asteroids in the array represent their relative position in space.\n\nFor each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.\n\nFind out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.",
         testCases: [
           {
@@ -884,7 +884,7 @@ const topicsData = [
         id: 5,
         title: "Decode String",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/qB0zZpBJlh8",
         description: `Given an encoded string, return its decoded string.\n\nThe encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is repeated exactly k times. k is always a positive integer.\n\nYou may assume the input string is always valid with well-formed brackets and no extra white spaces. The original data does not contain digits, and digits are only for repeat numbers k (e.g., there will not be input like 3a or 2[4]).\n\nThe test cases ensure that the output length will never exceed 10⁵.`,
         testCases: [
           {
@@ -926,7 +926,7 @@ const topicsData = [
         id: 1,
         title: "Delete the Middle Node of a Linked List",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/WT0O4TTjyNc",
         description: `You are given the head of a linked list. Delete the middle node, and return the head of the modified linked list.\n\nThe middle node of a linked list of size n is the ⌊n / 2⌋th node from the start using 0-based indexing, where ⌊x⌋ denotes the largest integer less than or equal to x.\n\nFor n = 1, 2, 3, 4, and 5, the middle nodes are 0, 1, 1, 2, and 2, respectively.`,
         testCases: [
           {
@@ -960,7 +960,7 @@ const topicsData = [
         id: 2,
         title: "Odd Even Linked List",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/k52H4XP5_pk",
         description: `Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.\n\nThe first node is considered odd, and the second node is even, and so on.\n\nNote that the relative order inside both the even and odd groups should remain as it was in the input.\n\nYou must solve the problem in O(1) extra space complexity and O(n) time complexity.`,
         testCases: [
           {
@@ -989,7 +989,7 @@ const topicsData = [
         id: 3,
         title: "Reverse Linked List",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/G0_I-ZF0S38",
         description: `Given the head of a singly linked list, reverse the list, and return the reversed list.`,
         testCases: [
           {
@@ -1022,7 +1022,7 @@ const topicsData = [
         id: 4,
         title: "Maximum Twin Sum of a Linked List",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/doj95MelfSA",
         description: `In a linked list of size n, where n is even, the ith node (0-indexed) of the linked list is known as the twin of the (n-1-i)th node, if 0 <= i <= (n / 2) - 1.\n\nFor example, if n = 4, then node 0 is the twin of node 3, and node 1 is the twin of node 2. These are the only nodes with twins for n = 4.\nThe twin sum is defined as the sum of a node and its twin.\n\nGiven the head of a linked list with even length, return the maximum twin sum of the linked list.`,
         testCases: [
           {
@@ -1064,7 +1064,7 @@ const topicsData = [
         id: 1,
         title: "Maximum Depth of Binary Tree",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/hTM3phVI6YQ",
         description: `Given the root of a binary tree, return its maximum depth.\n\nA binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.`,
         testCases: [
           {
@@ -1092,7 +1092,7 @@ const topicsData = [
         id: 2,
         title: "Leaf-Similar Trees",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Nr8dbnL0_cM",
         description: `Consider all the leaves of a binary tree. From left to right order, the values of those leaves form a leaf value sequence.\n\nTwo binary trees are considered leaf-similar if their leaf value sequence is the same.\n\nReturn true if and only if the two given trees with head nodes root1 and root2 are leaf-similar.`,
         testCases: [
           {
@@ -1121,7 +1121,7 @@ const topicsData = [
         id: 3,
         title: "Count Good Nodes in Binary Tree",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/7cp5imvDzl4",
         description: `Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.\n\nReturn the number of good nodes in the binary tree.`,
         testCases: [
           {
@@ -1156,7 +1156,7 @@ const topicsData = [
         id: 4,
         title: "Path Sum III",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/6jYxwdwjwKg",
         description: `Given the root of a binary tree and an integer targetSum, return the number of paths where the sum of the values along the path equals targetSum.\n\nThe path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only from parent nodes to child nodes).`,
         testCases: [
           {
@@ -1185,7 +1185,7 @@ const topicsData = [
         id: 5,
         title: "Longest ZigZag Path in a Binary Tree",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/hbzdyIlvBKI",
         description: `You are given the root of a binary tree.\n\nA ZigZag path for a binary tree is defined as follows:\n- Choose any node in the binary tree and a direction (right or left).\n- If the current direction is right, move to the right child of the current node; otherwise, move to the left child.\n- Change the direction from right to left or from left to right.\n- Repeat the second and third steps until you can't move in the tree.\n\nZigzag length is defined as the number of nodes visited - 1. (A single node has a length of 0).\n\nReturn the longest ZigZag path contained in that tree.`,
         testCases: [
           {
@@ -1220,7 +1220,7 @@ const topicsData = [
         id: 6,
         title: "Lowest Common Ancestor of a Binary Tree",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/gs2LMfuOR9k",
         description: `Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.\n\nAccording to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”`,
         testCases: [
           {
@@ -1264,7 +1264,7 @@ const topicsData = [
         id: 1,
         title: "Binary Tree Right Side View",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/d4zLyf32e3I",
         description: `Given the root of a binary tree, imagine yourself standing on the right side of it. Return the values of the nodes you can see ordered from top to bottom.`,
         testCases: [
           {
@@ -1305,7 +1305,7 @@ const topicsData = [
         id: 2,
         title: "Maximum Level Sum of a Binary Tree",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/7CgPNyJZ0xM",
         description: `Given the root of a binary tree, the level of its root is 1, the level of its children is 2, and so on.\n\nReturn the smallest level x such that the sum of all the values of nodes at level x is maximal.`,
         testCases: [
           {
@@ -1341,7 +1341,7 @@ const topicsData = [
         id: 1,
         title: "Search in a Binary Search Tree",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Lr2oxJlnLMM",
         description: `You are given the root of a binary search tree (BST) and an integer val.\n\nFind the node in the BST where the node's value equals val and return the subtree rooted with that node. If such a node does not exist, return null.`,
         testCases: [
           {
@@ -1370,7 +1370,7 @@ const topicsData = [
         id: 2,
         title: "Delete Node in a BST",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/LFzAoJJt92M",
         description: `Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.\n\nBasically, the deletion can be divided into two stages:\n\n1. Search for a node to remove.\n2. If the node is found, delete the node.`,
         testCases: [
           {
@@ -1415,7 +1415,7 @@ const topicsData = [
         id: 1,
         title: "Keys and Rooms",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Rz_-Kx0LN-E",
         description: `There are n rooms labeled from 0 to n - 1, and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.\n\nWhen you visit a room, you may find a set of distinct keys in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock other rooms.\n\nGiven an array rooms where rooms[i] represents the set of keys that you can obtain if you visited room i, return true if you can visit all the rooms, or false otherwise.`,
         testCases: [
           {
@@ -1446,7 +1446,7 @@ const topicsData = [
         id: 2,
         title: "Number of Provinces",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/UgBcBFRatDU",
         description: `There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.\n\nA province is a group of directly or indirectly connected cities and no other cities outside of the group.\n\nYou are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.\n\nReturn the total number of provinces.`,
         testCases: [
           {
@@ -1479,7 +1479,7 @@ const topicsData = [
         id: 3,
         title: "Reorder Routes to Make All Paths Lead to the City Zero",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/m17yOR5_PpI",
         description: `There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network forms a tree). Last year, the ministry of transport decided to orient the roads in one direction because they are too narrow.\n\nRoads are represented by connections where connections[i] = [a_i, b_i] represents a road from city a_i to city b_i.\n\nThis year, there will be a big event in the capital (city 0), and many people want to travel to this city.\n\nYour task consists of reorienting some roads such that each city can visit city 0. Return the minimum number of edges changed.\n\nIt's guaranteed that each city can reach city 0 after reordering.`,
         testCases: [
           {
@@ -1517,7 +1517,7 @@ const topicsData = [
         id: 4,
         title: "Evaluate Division",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Uei1fwDoyKk",
         description: `You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [A_i, B_i] and values[i] represent the equation A_i / B_i = values[i]. Each A_i or B_i is a string that represents a single variable.\n\nYou are also given some queries, where queries[j] = [C_j, D_j] represents the j-th query where you must find the answer for C_j / D_j = ?.\n\nReturn the answers to all queries. If a single answer cannot be determined, return -1.0.\n\nNote:\n- The input is always valid. You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.\n- The variables that do not occur in the list of equations are undefined, so the answer cannot be determined for them.`,
         testCases: [
           {
@@ -1564,7 +1564,7 @@ const topicsData = [
         id: 1,
         title: "Nearest Exit from Entrance in Maze",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/9a1QRrLICQ0",
         description: `You are given an m x n matrix maze (0-indexed) with empty cells (represented as '.') and walls (represented as '+'). You are also given the entrance of the maze, where entrance = [entrancerow, entrancecol] denotes the row and column of the cell you are initially standing at.\n\nIn one step, you can move one cell up, down, left, or right. You cannot step into a cell with a wall, and you cannot step outside the maze. Your goal is to find the nearest exit from the entrance. An exit is defined as an empty cell that is at the border of the maze. The entrance does not count as an exit.\n\nReturn the number of steps in the shortest path from the entrance to the nearest exit, or -1 if no such path exists.`,
         testCases: [
           {
@@ -1606,7 +1606,7 @@ const topicsData = [
         id: 2,
         title: "Rotting Oranges",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/y704fEOx0s0",
         description: `You are given an m x n grid where each cell can have one of three values:\n\n- 0 representing an empty cell,\n- 1 representing a fresh orange, or\n- 2 representing a rotten orange.\n\nEvery minute, any fresh orange that is 4-directionally adjacent to a rotten orange becomes rotten.\n\nReturn the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.`,
         testCases: [
           {
@@ -1649,7 +1649,7 @@ const topicsData = [
         id: 1,
         title: "Last Stone Weight",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/B-QCq79-Vfw",
         description: `You are given an array of integers stones where stones[i] is the weight of the ith stone.\n\nWe are playing a game with the stones. On each turn, we choose the heaviest two stones and smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:\n\n- If x == y, both stones are destroyed.\n- If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.\n\nAt the end of the game, there is at most one stone left.\n\nReturn the weight of the last remaining stone. If there are no stones left, return 0.`,
         testCases: [
           {
@@ -1675,7 +1675,7 @@ const topicsData = [
         id: 2,
         title: "Kth Largest Element in an Array",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/XEmy13g1Qxc",
         description: `Given an integer array nums and an integer k, return the kth largest element in the array.\n\nNote that it is the kth largest element in the sorted order, not the kth distinct element.\n\nCan you solve it without sorting?`,
         testCases: [
           {
@@ -1701,7 +1701,7 @@ const topicsData = [
         id: 3,
         title: "Maximum Subsequence Score",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/ax1DKi5lJwk",
         description: "You are given two 0-indexed integer arrays nums1 and nums2 of equal length n and a positive integer k. You must choose a subsequence of indices from nums1 of length k.\n\nFor chosen indices i0, i1, ..., ik - 1, your score is defined as:\n\n- The sum of the selected elements from nums1 multiplied with the minimum of the selected elements from nums2.\n\n- It can be defined simply as: (nums1[i0] + nums1[i1] +...+ nums1[ik - 1]) * min(nums2[i0], nums2[i1], ..., nums2[ik - 1]).\n\nReturn the maximum possible score.\n\nA subsequence of indices of an array is a set that can be derived from the set {0, 1, ..., n-1} by deleting some or no elements.",
         testCases: [
           {
@@ -1731,7 +1731,7 @@ const topicsData = [
         id: 4,
         title: "Total Cost to Hire K Workers",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/T2NiuToVFBU",
         description: "You are given a 0-indexed integer array costs where costs[i] is the cost of hiring the ith worker.\n\nYou are also given two integers k and candidates. We want to hire exactly k workers according to the following rules:\n\n- You will run k sessions and hire exactly one worker in each session.\n- In each hiring session, choose the worker with the lowest cost from either the first candidates workers or the last candidates workers. Break the tie by the smallest index.\n- If there are fewer than candidates workers remaining, choose the worker with the lowest cost among them. Break the tie by the smallest index.\n- A worker can only be chosen once.\n\nReturn the total cost to hire exactly k workers.",
         testCases: [
           {
@@ -1766,7 +1766,7 @@ const topicsData = [
         id: 1,
         title: "Guess Number Higher or Lower",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/xW4QsTtaCa4",
         description: "We are playing the Guess Game. The game is as follows:\n\nI pick a number from 1 to n. You have to guess which number I picked.\n\nEvery time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.\n\nYou call a pre-defined API int guess(int num), which returns three possible results:\n\n- -1: Your guess is higher than the number I picked (i.e. num > pick).\n- 1: Your guess is lower than the number I picked (i.e. num < pick).\n- 0: Your guess is equal to the number I picked (i.e. num == pick).\n\nReturn the number that I picked.",
         testCases: [
           {
@@ -1796,7 +1796,7 @@ const topicsData = [
         id: 2,
         title: "Successful Pairs of Spells and Potions",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/OKnm5oyAhWg",
         description: "You are given two positive integer arrays spells and potions, of length n and m respectively, where spells[i] represents the strength of the ith spell and potions[j] represents the strength of the jth potion.\n\nYou are also given an integer success. A spell and potion pair is considered successful if the product of their strengths is at least success.\n\nReturn an integer array pairs of length n where pairs[i] is the number of potions that will form a successful pair with the ith spell.",
         testCases: [
           {
@@ -1826,7 +1826,7 @@ const topicsData = [
         id: 3,
         title: "Find Peak Element",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/kMzJy9es7Hc",
         description: "A peak element is an element that is strictly greater than its neighbors.\n\nGiven a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.\n\nYou may imagine that nums[-1] = nums[n] = -∞. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.\n\nYou must write an algorithm that runs in O(log n) time.",
         testCases: [
           {
@@ -1854,7 +1854,7 @@ const topicsData = [
         id: 4,
         title: "Koko Eating Bananas",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/U2SozAs9RzA",
         description: "Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.\n\nKoko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.\n\nKoko likes to eat slowly but still wants to finish eating all the bananas before the guards return.\n\nReturn the minimum integer k such that she can eat all the bananas within h hours.",
         testCases: [
           {
@@ -1896,7 +1896,7 @@ const topicsData = [
         id: 1,
         title: "Letter Combinations of a Phone Number",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/0snEunUacZY",
         image : " https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png",
         description: `Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.`,
         testCases: [
@@ -1930,7 +1930,7 @@ const topicsData = [
         id: 2,
         title: "Combination Sum III",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/_xCNCpmr00Y",
         description: `Find all valid combinations of k numbers that sum up to n such that the following conditions are true:\n\n- Only numbers 1 through 9 are used.\n- Each number is used at most once.\n\nReturn a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.`,
         testCases: [
           {
@@ -1970,7 +1970,7 @@ const topicsData = [
         id: 1,
         title: "N-th Tribonacci Number",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/3lpNp5Ojvrw",
         description: `The Tribonacci sequence Tₙ is defined as follows:\n\nT₀ = 0, T₁ = 1, T₂ = 1, and Tₙ₊₃ = Tₙ + Tₙ₊₁ + Tₙ₊₂ for n ≥ 0.\n\nGiven n, return the value of Tₙ.`,
         testCases: [
           {
@@ -1997,7 +1997,7 @@ const topicsData = [
         id: 2,
         title: "Min Cost Climbing Stairs",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/ktmzAZWkEZ0",
         description: `You are given an integer array cost where cost[i] is the cost of iᵗʰ step on a staircase. Once you pay the cost, you can either climb one or two steps.\n\nYou can either start from the step with index 0, or the step with index 1.\n\nReturn the minimum cost to reach the top of the floor.`,
         testCases: [
           {
@@ -2024,7 +2024,7 @@ const topicsData = [
         id: 3,
         title: "House Robber",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/73r3KWiEvyk",
         description: `You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, but the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected, and it will automatically contact the police if two adjacent houses are broken into on the same night.\n\nGiven an integer array nums representing the amount of money in each house, return the maximum amount of money you can rob tonight without alerting the police.`,
         testCases: [
           {
@@ -2052,7 +2052,7 @@ const topicsData = [
         title: "Domino and Tromino Tiling",
         difficulty: "Medium",
         image: "https://assets.leetcode.com/uploads/2021/07/15/lc-domino.jpg",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/CecjOo4Zo-g",
         description: `You have two types of tiles: a 2 × 1 domino shape and a tromino shape. You may rotate these shapes.\n\nGiven an integer n, return the number of ways to tile a 2 × n board. Since the answer may be very large, return it modulo 10⁹ + 7.\n\nIn a tiling, every square must be covered by a tile. Two tilings are different if and only if there are two 4-directionally adjacent cells on the board such that exactly one of the tilings has both squares occupied by a tile.`,
         testCases: [
           {
@@ -2086,7 +2086,7 @@ const topicsData = [
         id: 1,
         title: "Unique Paths",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/IlEsdxuD4lY",
         description: `There is a robot on an m × n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.\n\nGiven the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.\n\nThe test cases are generated so that the answer will be less than or equal to 2 × 10⁹.`,
         testCases: [
           {
@@ -2113,7 +2113,7 @@ const topicsData = [
         id: 2,
         title: "Longest Common Subsequence",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Ua0GhsJSlWM",
         description: `Given two strings text₁ and text₂, return the length of their longest common subsequence. If there is no common subsequence, return 0.\n\nA subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.\n\nFor example, "ace" is a subsequence of "abcde".\nA common subsequence of two strings is a subsequence that is common to both strings.`,
         testCases: [
           {
@@ -2146,7 +2146,7 @@ const topicsData = [
         id: 3,
         title: "Best Time to Buy and Sell Stock with Transaction Fee",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/Ew_R-ZfhPEc",
         description: `You are given an array prices where prices[i] is the price of a given stock on the i-th day, and an integer fee representing a transaction fee.\n\nFind the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.\n\n**Note:**\n- You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).\n- The transaction fee is only charged once for each stock purchase and sale.`,
         testCases: [
           {
@@ -2174,7 +2174,7 @@ const topicsData = [
         id: 4,
         title: "Edit Distance",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/XYi2-LPrwm4",
         description: `Given two strings word₁ and word₂, return the minimum number of operations required to convert word₁ to word₂.\n\nYou have the following three operations permitted on a word:\n- Insert a character\n- Delete a character\n- Replace a character`,
         testCases: [
           {
@@ -2208,7 +2208,7 @@ const topicsData = [
         id: 1,
         title: "Counting Bits",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/RyBM56RIWrM",
         description: "Given an integer n, return an array ans of length n + 1 such that for each i (0 ≤ i ≤ n), ans[i] is the number of 1's in the binary representation of i.",
         testCases: [
           {
@@ -2234,7 +2234,7 @@ const topicsData = [
         id: 2,
         title: "Single Number",
         difficulty: "Easy",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/qMPX1AOa83k",
         description: "Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.\n\nYou must implement a solution with a linear runtime complexity and use only constant extra space.",
         testCases: [
           {
@@ -2265,7 +2265,7 @@ const topicsData = [
         id: 3,
         title: "Minimum Flips to Make a OR b Equal to c",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/GLCJIXStcMk",
         description: "Given three positive numbers a, b, and c, return the minimum flips required in some bits of a and b to make (a OR b == c). (bitwise OR operation).\n\nA flip operation consists of changing any single bit from 1 to 0 or from 0 to 1 in their binary representation.",
         testCases: [
           {
@@ -2305,7 +2305,7 @@ const topicsData = [
         id: 1,
         title: "Search Suggestions System",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/D4T2N0yAr20",
         description: "You are given an array of strings products and a string searchWord.\n\nDesign a system that suggests at most three product names from products after each character of searchWord is typed. Suggested products should have a common prefix with searchWord. If there are more than three products with a common prefix, return the three lexicographically minimum products.\n\nReturn a list of lists of the suggested products after each character of searchWord is typed.",
         testCases: [
           {
@@ -2338,7 +2338,7 @@ const topicsData = [
         id: 2,
         title: "Word Search 2",
         difficulty: "Hard",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/asbcE9mZz_U",
         description: `Given an m x n board of characters and a list of strings words, return all words on the board.\n\nEach word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.`,
         testCases: [
           {
@@ -2380,7 +2380,7 @@ const topicsData = [
         id: 1,
         title: "Non-overlapping Intervals",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/nONCGxWoUfM",
         description: "Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.\n\nNote that intervals which only touch at a point are non-overlapping. For example, [1, 2] and [2, 3] are non-overlapping.",
         testCases: [
           {
@@ -2414,7 +2414,7 @@ const topicsData = [
         id: 2,
         title: "Minimum Number of Arrows to Burst Balloons",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/lPmkKnvNPrw",
         description: "There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array points where points[i] = [xₛₜₐᵣₜ, xₑₙd] denotes a balloon whose horizontal diameter stretches between xₛₜₐᵣₜ and xₑₙd. You do not know the exact y-coordinates of the balloons.\n\nArrows can be shot up directly vertically (in the positive y-direction) from different points along the x-axis. A balloon with xₛₜₐᵣₜ and xₑₙd is burst by an arrow shot at x if xₛₜₐᵣₜ ≤ x ≤ xₑₙd. There is no limit to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.\n\nGiven the array points, return the minimum number of arrows that must be shot to burst all balloons.",
         testCases: [
           {
@@ -2455,7 +2455,7 @@ const topicsData = [
         id: 1,
         title: "Daily Temperatures",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/cTBiBSnjO3c",
         description: "Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the iᵗʰ day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] = 0 instead.",
         testCases: [
           {
@@ -2485,7 +2485,7 @@ const topicsData = [
         id: 2,
         title: "Next Greater Element 2",
         difficulty: "Medium",
-        solutionLink: "",
+        solutionLink: "https://www.youtube.com/embed/7PrncD7v9YQ",
         description: "Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return the next greater number for every element in nums.\n\nThe next greater number of a number x is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, return -1 for this number.",
         testCases: [
           {

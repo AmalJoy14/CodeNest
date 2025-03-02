@@ -1,14 +1,17 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import Header from '../header';
 import Footer from '../footer';
 import styles from './topics.module.css';
 import topicsData from './Topics/topicsData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faVideo , faXmark} from '@fortawesome/free-solid-svg-icons';
 
 
 export default function TopicPage() {
   const { topicId } = useParams();
+  const navigate = useNavigate();
+  const [videoLink, setVideoLink] = useState(null);
 
   const topic = topicsData.find(t => 
     t.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-") === topicId
@@ -28,7 +31,7 @@ const getDifficultyClass = (difficulty) => {
     }
 };
 
-const navigate = useNavigate();
+
 const handleRowClick = (link) => {
 navigate(link);
 };
@@ -58,13 +61,25 @@ navigate(link);
                   </td>
                   <td className={getDifficultyClass(problem.difficulty)}>{problem.difficulty}</td>
                   <td className={styles.sol}>
-                  <a href={problem.solutionLink ? problem.solutionLink : "https://www.google.com"} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon className = {styles.camera} icon={faVideo} /></a>
+                  {problem.solutionLink && <FontAwesomeIcon className={styles.camera} icon={faVideo} onClick={(e) => (e.stopPropagation(), setVideoLink(problem.solutionLink))} style={{ cursor: "pointer" }} />}
                    </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        {videoLink && (
+          <div className={styles.videoOverlay}>
+            <div className={styles.videoContainer}>
+              <button className={styles.closeButton} onClick={() => setVideoLink(null)}>
+                <FontAwesomeIcon icon={faXmark} />
+              </button>
+              <iframe width="800" height="450" src={`${videoLink}?rel=0`}  title="Solution Video"  frameBorder="0" allowFullScreen></iframe>
+            </div>
+          </div>
+        )}
+
       </main>
       <Footer />
     </div>
