@@ -3,13 +3,37 @@ import Footer from "../footer";
 import styles from "./problems.module.css";
 import { useNavigate } from "react-router-dom";
 import topicsData from "./Topics/topicsData"; 
+import { useState , useEffect } from "react";
+import axios from "axios";
 
 function Problems() {
   const navigate = useNavigate();
+  const [solvedCounts, setSolvedCounts] = useState({});
 
   const handleRowClick = (link) => {
     navigate(link);
   };
+
+  useEffect(() => {
+    const fetchSolvedProblems = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/problems/countSolved", {
+          withCredentials: true, 
+        });
+        const solvedProblems = response.data;
+
+        const counts = {};
+        solvedProblems.forEach(({ topic }) => {
+          counts[topic] = (counts[topic] || 0) + 1;
+        });
+
+        setSolvedCounts(counts);
+      } catch (error) {
+        console.error("Error fetching solved problems:", error);
+      }
+    };
+    fetchSolvedProblems();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -36,7 +60,7 @@ function Problems() {
                   <td className={styles.td}>{topic.id}</td>
                   <td className={styles.cell}>{topic.title}</td>
                   <td className={styles.td}>
-                    {`0 / ${topic.total}`} {/* Update solved count dynamically when needed */}
+                    {`${solvedCounts[topic.id] || 0} / ${topic.total}`}
                   </td>
                 </tr>
               ))}

@@ -11,7 +11,7 @@ router.get("/homeData", async (req, res) => {
         sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
         const activeUserCount = await userModel.countDocuments({ lastSignIn: { $gte: sixMonthsAgo } });
 
-        const totalProblemsSolved = await userModel.aggregate([ { $group: { _id: null, total: { $sum: { $add: ["$easySolved", "$mediumSolved", "$hardSolved"] } } } } ]);
+        const totalProblemsSolved = await userModel.aggregate([{ $group: { _id: null, total: { $sum: { $size: "$solvedProblems" } } } }]);
         
         const problemsSolved = totalProblemsSolved.length > 0 ? totalProblemsSolved[0].total : 0;
 

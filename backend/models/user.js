@@ -16,18 +16,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required:true
     },
-    easySolved: {
-      type: Number,
-      default: 0,
-    },
-    mediumSolved: {
-      type: Number,
-      default: 0,
-    },
-    hardSolved: {
-      type: Number,
-      default: 0,
-    },
     leetcodeUsername: {
       type: String,
       default: ""
@@ -47,8 +35,44 @@ const userSchema = new mongoose.Schema({
     image: {
       type: String,
       default: null,
-    }
+    },
+    solvedProblems: [
+      {
+        problemId: { 
+          type: mongoose.Schema.Types.ObjectId, 
+          ref: "Problem" 
+        },
+        title:{
+          type: String,
+          required: true,
+        },
+        topic:{
+          type: String,
+          required: true,
+        },
+        difficulty: { 
+          type: String, 
+          enum: ["Easy", "Medium", "Hard"] 
+        }
+      },
+    ]
 });
+
+
+userSchema.virtual("easySolved").get(function () {
+  return this.solvedProblems.filter(p => p.difficulty === "Easy").length;
+});
+
+userSchema.virtual("mediumSolved").get(function () {
+  return this.solvedProblems.filter(p => p.difficulty === "Medium").length;
+});
+
+userSchema.virtual("hardSolved").get(function () {
+  return this.solvedProblems.filter(p => p.difficulty === "Hard").length;
+});
+
+userSchema.set("toJSON", { virtuals: true });
+userSchema.set("toObject", { virtuals: true });
 
 
 const user = mongoose.model("user",userSchema,"user"); //collection

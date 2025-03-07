@@ -10,6 +10,8 @@ import leaderboardRoutes from "./Routes/leaderboardRoutes.js";
 import platformRoutes from "./Routes/platformRoutes.js";
 import profileRoutes from "./Routes/profileRoutes.js";
 import discussRoutes from "./Routes/discussRoutes.js";
+import judge0Routes from "./Routes/judge0Routes.js";
+import problemsRoutes from "./Routes/problemsRoutes.js"
 
 import userModel from "./models/user.js";
 dotenv.config();
@@ -34,6 +36,8 @@ app.use("/home",homeRoutes);
 app.use("/profile", profileRoutes);
 app.use("/discuss",discussRoutes);
 app.use("/public", express.static("public"));
+app.use("/judge0", judge0Routes);
+app.use("/problems", problemsRoutes);
 
 app.get('/profileImage', authenticateToken,async (req, res) => {
     const username = req.user.username;

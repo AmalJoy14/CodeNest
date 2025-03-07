@@ -1,15 +1,14 @@
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import styles from "./QuestionPage.module.css"
 import CodeEditor from "./codeEditor"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleCheck , faVideo , faXmark} from "@fortawesome/free-solid-svg-icons"
+import { faCircleCheck , faVideo , faXmark , faArrowLeft} from "@fortawesome/free-solid-svg-icons"
 import topicsData from "./Topics/topicsData"
 import { useParams } from "react-router-dom"
+import axios from "axios"
 
 export default function QuestionPage() {
   const { topicId, questionId } = useParams();
-  const [videoLink, setVideoLink] = useState(null);
-
 
   const topic = topicsData.find(t => 
     t.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '-') === topicId
@@ -19,12 +18,15 @@ export default function QuestionPage() {
   const problem = topic.problems.find(p => 
     p.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-") === questionId
   );
-
-
+  
+  const [videoLink, setVideoLink] = useState(null);
   const [code, setCode] = useState(problem.defaultCode)
   const [testResults, setTestResults] = useState(null)
-  const [isSolved, setIsSolved] = useState(true)
+  const [isSolved, setIsSolved] = useState(false);
+  const [selectedTestCase, setSelectedTestCase] = useState(null);
+
   const [language, setLanguage] = useState('javascript');
+
 
   const languages = [
     { label: 'JavaScript', value: 'javascript' },
@@ -39,19 +41,91 @@ export default function QuestionPage() {
     setCode(value)
   }
 
-  const handleRunCode = () => {
-    console.log("Running code:", code)
-    setTestResults({
-      status: "success",
-      output: "[0,1]",
-      runtime: "76 ms",
-      memory: "42.1 MB",
-    })
-  }
+  const handleRunCode = async () => {
 
-  const handleSubmit = () => {
-    console.log("Submitting code:", code)
-  }
+    try {
+      const response = await axios.post("http://localhost:3000/judge0/run", { 
+        sourceCode: code, 
+        language, 
+        problemId: questionId
+      },
+      { withCredentials: true },
+      );
+
+      const resultData = response.data;
+      console.log(resultData);
+      
+      
+      if (response.data) {
+        
+        const firstError = resultData.find(result => result.status.description !== "Accepted");
+
+        if (firstError) {
+          setTestResults([{
+              id: firstError.status.id,
+              status: firstError.status.description,
+              compile_output: firstError.compile_output || null,
+              runtime: `${(firstError.time ? firstError.time * 1000 : 0) > 1000 ? "1000+" : (firstError.time || 0) * 1000} ms`,
+              memory: `${((firstError.memory || 0) / 1024).toFixed(2)} MB`,
+              stderr: firstError.stderr || null,
+              stdout: firstError.stdout || null,
+              expected_output: firstError.testCase.output,
+              input: firstError.testCase.input
+          }]);
+        } else {
+            setTestResults(resultData.map((result,index) => ({
+                id: result.status.id,
+                status: result.status.description,
+                compile_output: result.compile_output || null,
+                runtime: `${(result.time ? result.time * 1000 : 0) > 1000 ? "1000+" : (result.time || 0) * 1000} ms`,
+                memory: `${((result.memory || 0) / 1024).toFixed(2)} MB`,
+                stderr: result.stderr || null,
+                stdout: result.stdout || null,
+                expected_output: result.testCase.output,
+                input: result.testCase.input,
+                index: index + 1
+            })));
+        }
+        return resultData;
+      }
+    } catch (error) {
+      console.error("Error running code:", error);
+      setTestResults({ status: "Error", output: "Failed to execute code" });
+    }
+  };
+
+  const handleSubmit = async () => {
+    const result = await handleRunCode();
+
+    if (result[0].status.description === "Accepted") {
+        try {
+            const response = await axios.post("http://localhost:3000/judge0/submit", { 
+                problemId: questionId,
+                topicId: topic.id
+            }, { withCredentials: true });
+            if(response.status === 200) setIsSolved(true);
+        } catch (error) {
+            console.error("Error submitting solution:", error);
+        }
+    }
+  };
+
+
+  useEffect(() => {
+    const checkIfSolved = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/judge0/isSolved/${questionId}`, 
+        { withCredentials: true });
+  
+        setIsSolved(response.data.solved); 
+      } catch (error) {
+        console.error("Error checking problem status:", error);
+      }
+    };
+
+    checkIfSolved();
+  }, []);
+
 
   return (
     <div className={styles.container}>
@@ -79,7 +153,7 @@ export default function QuestionPage() {
               </div>
               <div className={styles.testcaseItem}>
                 <div className={styles.testcaseLabel}>Output:</div>
-                <div className={styles.testcaseValue}>{testCase.output}</div>
+                <div className={styles.testcaseValue}>{testCase.stdout}</div>
               </div>
               {testCase.explanation && (
                 <div className={styles.testcaseItem}>
@@ -124,27 +198,87 @@ export default function QuestionPage() {
           <CodeEditor code={code} onCodeChange={handleCodeChange} language={language} />
         </div>
 
-        
           <div className={styles.testcaseSection}>
-            <h3 className={styles.testcaseHeader}>Test Results:</h3>
+            <h3 className={styles.testResultsHeader}>Test Results:</h3>
             {testResults && (
               <div className={styles.testcaseContent}>
-                <div className={styles.testcaseItem}>
-                  <div className={styles.testcaseLabel}>Status:</div>
-                  <div className={styles.testcaseValue}>{testResults.status}</div>
+
+                {/* TLE & wrong answer*/}
+                {testResults[0].compile_output === null && testResults[0].stderr === null && (testResults[0].id === 5 || testResults[0].id === 4) &&
+                <div>
+                  <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Status:</div>
+                    <div className={`${styles.testcaseValue} ${styles.errorMessage}`}>{testResults[0].status}</div>
+                  </div>
+                  {testResults[0].id === 4 && <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Input:</div>
+                    <div className={styles.testcaseValue}>{testResults[0].input}</div>
+                  </div>}
+                  {testResults[0].stdout && <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Output:</div>
+                    <div className={styles.testcaseValue}>{testResults[0].stdout}</div>
+                  </div>}
+                  {testResults[0].id === 4 && <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Expected Output:</div>
+                    <div className={styles.testcaseValue}>{testResults[0].expected_output}</div>
+                  </div>}
+                  <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Runtime:</div>
+                    <div className={styles.testcaseValue}>{testResults[0].runtime}</div>
+                  </div>
+                  <div className={styles.testcaseItem}>
+                    <div className={styles.testcaseLabel}>Memory:</div>
+                    <div className={styles.testcaseValue}>{testResults[0].memory}</div>
+                  </div>
                 </div>
-                <div className={styles.testcaseItem}>
-                  <div className={styles.testcaseLabel}>Output:</div>
-                  <div className={styles.testcaseValue}>{testResults.output}</div>
-                </div>
-                <div className={styles.testcaseItem}>
-                  <div className={styles.testcaseLabel}>Runtime:</div>
-                  <div className={styles.testcaseValue}>{testResults.runtime}</div>
-                </div>
-                <div className={styles.testcaseItem}>
-                  <div className={styles.testcaseLabel}>Memory:</div>
-                  <div className={styles.testcaseValue}>{testResults.memory}</div>
-                </div>
+                }
+
+                {/* Error */}
+                {(testResults[0].compile_output || testResults[0].stderr ) ? (
+                  <div className={styles.testcaseItem}>
+                    <div className={styles.errorMessage}>{testResults[0].compile_output || testResults[0].stderr}</div>
+                  </div>
+                ) : null}   
+
+                {/* Success */}
+                {testResults[0].id === 3 && (
+                  <div className={styles.testcaseList}>
+
+                    {selectedTestCase === null && testResults.map((test, index) => (
+                      <div key={index} className={styles.testcaseRow} onClick={() => setSelectedTestCase(index)}>
+                        <FontAwesomeIcon color = "#2ceb5d" icon={faCircleCheck} /> Testcase {index + 1}
+                      </div>
+                    ))}
+
+                    {selectedTestCase !== null && (
+                      <div className={styles.testcaseDetails}>
+                        <FontAwesomeIcon className={styles.backButton} onClick={() => setSelectedTestCase(null)} icon={faArrowLeft} />
+                        <h4 className={styles.testcaseHeader}>Testcase {selectedTestCase + 1}</h4>
+                        <div className={styles.testcaseItem}>
+                          <div className={styles.testcaseLabel}>Input:</div>
+                          <div className={styles.testcaseValue}>{testResults[selectedTestCase].input}</div>
+                        </div>
+                        <div className={styles.testcaseItem}>
+                          <div className={styles.testcaseLabel}>Output:</div>
+                          <div className={styles.testcaseValue}>{testResults[selectedTestCase].stdout}</div>
+                        </div>
+                        <div className={styles.testcaseItem}>
+                          <div className={styles.testcaseLabel}>Expected Output:</div>
+                          <div className={styles.testcaseValue}>{testResults[selectedTestCase].expected_output}</div>
+                        </div>
+                        <div className={styles.testcaseItem}>
+                          <div className={styles.testcaseLabel}>Runtime:</div>
+                          <div className={styles.testcaseValue}>{testResults[selectedTestCase].runtime}</div>
+                        </div>
+                        <div className={styles.testcaseItem}>
+                          <div className={styles.testcaseLabel}>Memory:</div>
+                          <div className={styles.testcaseValue}>{testResults[selectedTestCase].memory}</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}  
+
               </div>
             )}
             {!testResults && (

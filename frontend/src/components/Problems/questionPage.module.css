@@ -18,6 +18,7 @@
     flex: 1.1;
     display: flex;
     flex-direction: column;
+    max-width: 50%;
   }
   
   .problemHeader {
@@ -77,8 +78,10 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    overflow-x: auto;
     scrollbar-width: thin;
     scrollbar-color: #333 #1a1a1a;
+    white-space: nowrap;
   }
   
   .buttonContainer {
@@ -122,16 +125,25 @@
   }
   
   .testcaseSection {
+    flex: 1;
     padding: 20px;
     background-color: #2a2a2a;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1a1a1a;
+    border-top: 2px solid rgb(109, 106, 106);
   }
   
-  .testcaseHeader {
+  .testcaseHeader , .testResultsHeader{
     font-size: 16px;
     margin-bottom: 15px;
+  }
+
+  .testResultsHeader{
+    margin-bottom: 0px;
   }
 
   .constraint , .solution{
@@ -157,6 +169,8 @@
     background-color: #1a1a1a;
     padding: 15px;
     border-radius: 4px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   .testcaseContent img , .problemImage{
@@ -183,7 +197,7 @@
     background-color: #1a1a1a;
     padding: 15px;
     border-radius: 4px;
-    height: 250px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -247,4 +261,41 @@
     color: #8c9292;
     position: relative;
     top: 2px;
+  }
+
+  .errorMessage{
+    font-family: "Courier New", Courier, monospace;
+    font-size: small;
+    font-weight: bold;
+    color: #ff4d4d;
+  }
+
+  .testcaseRow{
+    padding: 5px 10px;
+    background-color: #2a2a2a;
+    align-items: center;
+    border: 2px solid rgb(103, 96, 96);
+    border-radius: 3px;
+    color: #8a8a8a;
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+
+  .testcaseList{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .testcaseDetails{
+    position: relative;
+  }
+
+  .backButton{
+    position: absolute;
+    cursor: pointer;
+    right: 0px;
   }

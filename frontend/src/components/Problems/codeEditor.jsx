@@ -26,8 +26,9 @@ const CodeEditor = ({ code, onCodeChange, language }) => {
     <CodeMirror
       value={code}
       height="100%"
+      width='100%'
       theme={material}
-      
+
       extensions={[getLanguageExtension(language)]}
       onChange={(value) => onCodeChange(value)}
       basicSetup={{

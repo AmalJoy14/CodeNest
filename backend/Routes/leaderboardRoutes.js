@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/codenest", authenticateToken, async (req, res) => {
     try {
         const username = req.user.username;
-        const users = await userModel.find({}, { username: 1, fullname: 1, easySolved: 1, mediumSolved: 1, hardSolved: 1 ,image: 1});
+        const users = await userModel.find();
 
         const leaderboard = users.map(user => ({
             platformUsername : user.username,
