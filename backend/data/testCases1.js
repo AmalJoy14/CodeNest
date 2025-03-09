@@ -1,4 +1,4 @@
-const testCases = {
+const testCases1 = {
   "merge-strings-alternately": [
     {
       id: 1,
@@ -875,4 +875,4 @@ const testCases = {
   ],
 };
 
-export default testCases;
+export default testCases1;

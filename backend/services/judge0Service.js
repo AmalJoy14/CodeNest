@@ -1,5 +1,5 @@
 import axios from "axios";
-import testCases from "../data/testCases1.js";
+import testCases from "../data/testCases.js";
 
 const JUDGE0_API_URL = "https://judge0-ce.p.rapidapi.com/submissions";
 

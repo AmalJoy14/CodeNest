@@ -326,7 +326,7 @@ const topicsData = [
           "1 <= nums.length <= 10⁴",
           "-2³¹ <= nums[i] <= 2³¹ - 1"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input :\n5\n0 1 0 3 12\n\nSample Output:\n1 3 12 0 0`
       },      
 
       {
@@ -412,7 +412,7 @@ const topicsData = [
           "1 <= nums[i] <= 10⁹",
           "1 <= k <= 10⁹"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n4\n1 2 3 4\n5\n\nSample Output: \n2`
       }      
     ]
   },

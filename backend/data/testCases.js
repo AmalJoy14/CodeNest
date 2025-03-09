@@ -1,5 +1,5 @@
 import testCases1 from './testCases1.js';
-// import testCases2 from './testCases/testCases2.js';
+import testCases2 from './testCases2.js';
 // import testCases3 from './testCases/testCases3.js';
 // import testCases4 from './testCases/testCases4.js';
 // import testCases5 from './testCases/testCases5.js';
@@ -22,7 +22,7 @@ import testCases1 from './testCases1.js';
 
 const testCases = {
   ...testCases1,
-//   ...testCases2,
+  ...testCases2,
 //   ...testCases3,
 //   ...testCases4,
 //   ...testCases5,

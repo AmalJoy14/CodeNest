@@ -75,8 +75,8 @@ export default function QuestionPage() {
       if (response.data) {
         
         const firstErrorIndex = resultData.findIndex(result => result.status.description !== "Accepted");
-        console.log("testcase" + firstErrorIndex + 1);
-        // const firstError = resultData.find(result => result.status.description !== "Accepted");
+        console.log("testcase" + (firstErrorIndex + 1));
+
         const firstError = firstErrorIndex !== -1 ? resultData[firstErrorIndex] : null;
 
         if (firstError) {
