@@ -1,5 +1,5 @@
 import axios from "axios";
-import testCases from "../data/testCases.js";
+import testCases from "../data/testCases1.js";
 
 const JUDGE0_API_URL = "https://judge0-ce.p.rapidapi.com/submissions";
 
@@ -13,7 +13,6 @@ const languageMapping = {
 };
 
 export async function submitCodeToJudge0(code, language , problemId) {
-  try {
     const apiKey = process.env.JUDGE0_API_KEY; 
 
     if (!testCases[problemId] || !Array.isArray(testCases[problemId])) {
@@ -21,16 +20,16 @@ export async function submitCodeToJudge0(code, language , problemId) {
     }
 
     // Prepare submissions for batch request
-    const submissions = testCases[problemId].map(({ input, output }) => ({
+    const submissions = testCases[problemId].map(({ input, output } ) => ({
       source_code: code,
       language_id: languageMapping[language],
       stdin: input,
       expected_output : output,
       cpu_time_limit: 1,
-      memory_limit: 65536,
+      memory_limit: 262144,
     }));
 
-    const submitResponse = await axios.post(
+    const {data} = await axios.post(
       `${JUDGE0_API_URL}/batch?base64_encoded=false&wait=true`,
       {submissions },
       {
@@ -42,24 +41,29 @@ export async function submitCodeToJudge0(code, language , problemId) {
       }
     );
 
-    const tokens = submitResponse.data.map((item) => item.token);
-    
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait 2 seconds
+    const tokens = data.map((item) => item.token);
 
-    // Fetch all results in **one API call** (Judge0 allows batch fetching)
-    const resultsResponse = await axios.get(
+
+    return await pollJudge0Results(tokens, apiKey);
+}
+
+
+async function pollJudge0Results(tokens, apiKey) {
+  while (true) {
+    await new Promise((res) => setTimeout(res, 1000)); 
+
+    const response = await axios.get(
       `${JUDGE0_API_URL}/batch?tokens=${tokens.join(",")}&base64_encoded=false`,
       {
         headers: {
+          "Content-Type": "application/json",
           "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
           "X-RapidAPI-Key": apiKey,
         },
       }
     );
+    console.log(response.headers);
 
-    return resultsResponse.data;
-  } catch (error) {
-    console.error("Judge0 API error:", error );
-    return null;
+    if (response.data.submissions.every((res) => res.status.id >= 3)) return response.data; 
   }
 }

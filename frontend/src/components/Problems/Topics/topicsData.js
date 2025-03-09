@@ -104,7 +104,7 @@ const topicsData = [
           "1 <= candies[i] <= 100",
           "1 <= extraCandies <= 50"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input :\n5\n2 3 5 1 3\n3\n\nSample Output :\ntrue true true false true`
       },
       
       {
@@ -133,7 +133,7 @@ const topicsData = [
           "There are no two adjacent flowers in flowerbed.",
           "0 <= n <= flowerbed.length"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input :\n5\n1 0 0 0 1\n1\n\nSample Output :\ntrue`
       },
       
       {
@@ -226,7 +226,7 @@ const topicsData = [
           "-30 <= nums[i] <= 30",
           "The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer."
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n4\n1 2 3 4\n\nSample Output:\n24 12 8 6`
       },
       
       {
@@ -259,7 +259,7 @@ const topicsData = [
           "1 <= nums.length <= 5 * 10^5",
           "-2^31 <= nums[i] <= 2^31 - 1"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n5\n1 2 3 4 5\n\nSample Output:\ntrue`
       },
       
       {
@@ -267,7 +267,7 @@ const topicsData = [
         title: "String Compression",
         difficulty: "Medium",
         solutionLink: "https://www.youtube.com/embed/cAB15h6-sWA?si=wZ8TApx-Wt7PvnJC",
-        description: `Given an array of characters chars, compress it using the following algorithm:\n\n- Begin with an empty string s.\n- For each group of consecutive repeating characters in chars:\n  - If the group's length is 1, append the character to s.\n  - Otherwise, append the character followed by the group's length.\n\nThe compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.\n\nAfter modifying the input array, return its new length.\n\nYou must write an algorithm that uses only constant extra space.`,
+        description: `Given an array of characters chars, compress it using the following algorithm:\n\n- Begin with an empty string s.\n- For each group of consecutive repeating characters in chars:\n  - If the group's length is 1, append the character to s.\n  - Otherwise, append the character followed by the group's length.\n\n Note that group lengths that are 10 or longer will be split into multiple characters in chars.\n\nAfter modifying the input array, return its new length.\n\nYou must write an algorithm that uses only constant extra space.`,
         testCases: [
           {
             example: 1,
@@ -292,7 +292,7 @@ const topicsData = [
           "1 <= chars.length <= 2000",
           "chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol."
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input: 7\na a b b c c c\n\nSample Output: 6`
       }
       
     ]

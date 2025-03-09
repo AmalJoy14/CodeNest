@@ -6,6 +6,7 @@ import { faCircleCheck , faVideo , faXmark , faArrowLeft} from "@fortawesome/fre
 import topicsData from "./Topics/topicsData"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import commentOutCode from "./commentOut.js"
 
 export default function QuestionPage() {
   const { topicId, questionId } = useParams();
@@ -18,14 +19,22 @@ export default function QuestionPage() {
   const problem = topic.problems.find(p => 
     p.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, "-") === questionId
   );
-  
+
+  const [language, setLanguage] = useState('javascript');
   const [videoLink, setVideoLink] = useState(null);
-  const [code, setCode] = useState(problem.defaultCode)
+  const [code, setCode] = useState(() => commentOutCode(problem.defaultCode, language));
   const [testResults, setTestResults] = useState(null)
   const [isSolved, setIsSolved] = useState(false);
   const [selectedTestCase, setSelectedTestCase] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [language, setLanguage] = useState('javascript');
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("languageChange", { detail: language }));
+  }, [language]);
+
+  useEffect(() => {
+    setCode(commentOutCode(problem.defaultCode, language));
+  }, [language]);
 
 
   const languages = [
@@ -43,6 +52,13 @@ export default function QuestionPage() {
 
   const handleRunCode = async () => {
 
+    if (!code.trim()) {
+      console.log("Code is empty, not running.");
+      return null;
+    }
+
+    setIsLoading(true);
+
     try {
       const response = await axios.post("http://localhost:3000/judge0/run", { 
         sourceCode: code, 
@@ -58,7 +74,10 @@ export default function QuestionPage() {
       
       if (response.data) {
         
-        const firstError = resultData.find(result => result.status.description !== "Accepted");
+        const firstErrorIndex = resultData.findIndex(result => result.status.description !== "Accepted");
+        console.log("testcase" + firstErrorIndex + 1);
+        // const firstError = resultData.find(result => result.status.description !== "Accepted");
+        const firstError = firstErrorIndex !== -1 ? resultData[firstErrorIndex] : null;
 
         if (firstError) {
           setTestResults([{
@@ -91,11 +110,14 @@ export default function QuestionPage() {
     } catch (error) {
       console.error("Error running code:", error);
       setTestResults({ status: "Error", output: "Failed to execute code" });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleSubmit = async () => {
     const result = await handleRunCode();
+    if(result === null) return
 
     if (result[0].status.description === "Accepted") {
         try {
@@ -153,7 +175,7 @@ export default function QuestionPage() {
               </div>
               <div className={styles.testcaseItem}>
                 <div className={styles.testcaseLabel}>Output:</div>
-                <div className={styles.testcaseValue}>{testCase.stdout}</div>
+                <div className={styles.testcaseValue}>{testCase.output}</div>
               </div>
               {testCase.explanation && (
                 <div className={styles.testcaseItem}>
@@ -200,7 +222,7 @@ export default function QuestionPage() {
 
           <div className={styles.testcaseSection}>
             <h3 className={styles.testResultsHeader}>Test Results:</h3>
-            {testResults && (
+            {testResults && !isLoading && (
               <div className={styles.testcaseContent}>
 
                 {/* TLE & wrong answer*/}
@@ -281,7 +303,10 @@ export default function QuestionPage() {
 
               </div>
             )}
-            {!testResults && (
+
+            {isLoading && <div className={styles.loaderContainer}><div className={styles.spinner}></div></div>}
+
+            {!testResults && !isLoading && (
               <div className={styles.notestcaseSection}><p className={styles.testcaseLabel}>You must run your code first</p></div>
             )}
           </div>

@@ -15,12 +15,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Intro page will automatically transition to SignIn after 5 seconds */}
         <Route path="/" element={<IntroWithTimer />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/home" element={<Home />} />
-
+        
+        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>}/>
         <Route path="/discuss" element={<PrivateRoute><Discuss /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>}/>
@@ -37,7 +36,7 @@ const IntroWithTimer = () => {
   const navigate = useNavigate(); 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/signin'); 
+      navigate('/home'); 
     }, 2500);
 
     return () => clearTimeout(timer); 
