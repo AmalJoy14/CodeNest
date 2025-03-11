@@ -446,7 +446,7 @@ const topicsData = [
           "1 <= k <= n",
           "-10⁴ <= nums[i] <= 10⁴"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n6\n1 12 -5 -6 50 3\n4\n\nSample Output: \n12.75000`
       },
       
       {
@@ -480,7 +480,7 @@ const topicsData = [
           "s consists of lowercase English letters.",
           "1 <= k <= s.length"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input: \nabciiidef\n3\n\nSample Output: \n3`
       },
       
       {
@@ -508,7 +508,7 @@ const topicsData = [
           "nums[i] is either 0 or 1.",
           "0 <= k <= nums.length"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n11\n1 1 1 0 0 0 1 1 1 1 0\n2\n\nSample Output:\n6`
       },
       
       {
@@ -541,7 +541,7 @@ const topicsData = [
           "1 <= nums.length <= 10⁵",
           "nums[i] is either 0 or 1."
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n4\n1 1 0 1\n\nSample Output:\n3`
       }      
       
     ]
@@ -576,7 +576,7 @@ const topicsData = [
           "1 <= n <= 100",
           "-100 <= gain[i] <= 100"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n5\n-5 1 5 0 -7\n\nSample Output:\n1`
       },
       
       {
@@ -609,7 +609,7 @@ const topicsData = [
           "1 <= nums.length <= 10⁴",
           "-1000 <= nums[i] <= 1000"
         ],
-        defaultCode: ``
+        defaultCode: `Sample Input:\n6\n1 7 3 6 5 6\n\nSample Output:\n3`
       }      
     ]
   },

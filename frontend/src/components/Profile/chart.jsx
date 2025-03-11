@@ -32,7 +32,7 @@ class ProblemChart extends Component {
     }
 
     const { username } = this.state.user;
-    const easySolved = this.state.user.easySolved || 1;
+    const easySolved = this.state.user.easySolved || 0;
     const mediumSolved = this.state.user.mediumSolved || 0;
     const hardSolved = this.state.user.hardSolved || 0;
     const totalSolved = easySolved + mediumSolved + hardSolved;
