@@ -75,7 +75,7 @@ export default function QuestionPage() {
       if (response.data) {
         
         const firstErrorIndex = resultData.findIndex(result => result.status.description !== "Accepted");
-        console.log("testcase" + (firstErrorIndex + 1));
+        console.log("testcase " , (firstErrorIndex + 1));
 
         const firstError = firstErrorIndex !== -1 ? resultData[firstErrorIndex] : null;
 
@@ -118,8 +118,9 @@ export default function QuestionPage() {
   const handleSubmit = async () => {
     const result = await handleRunCode();
     if(result === null) return
+    const allAccepted = result.every(test => test.status.description === "Accepted");
 
-    if (result[0].status.description === "Accepted") {
+    if (allAccepted) {
         try {
             const response = await axios.post("http://localhost:3000/judge0/submit", { 
                 problemId: questionId,
