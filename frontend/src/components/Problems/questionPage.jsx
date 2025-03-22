@@ -1,5 +1,5 @@
 import { useState , useEffect} from "react"
-import styles from "./QuestionPage.module.css"
+import styles from "./questionPage.module.css"
 import CodeEditor from "./codeEditor"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck , faVideo , faXmark , faArrowLeft} from "@fortawesome/free-solid-svg-icons"
