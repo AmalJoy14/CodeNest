@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import styles from './CommunityStats.module.css'
+import styles from './communityStats.module.css'
 import axios from 'axios'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
