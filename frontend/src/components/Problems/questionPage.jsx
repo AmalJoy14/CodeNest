@@ -7,6 +7,8 @@ import topicsData from "./Topics/topicsData"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import commentOutCode from "./commentOut.js"
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 
 export default function QuestionPage() {
   const { topicId, questionId } = useParams();
@@ -60,7 +62,7 @@ export default function QuestionPage() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3000/judge0/run", { 
+      const response = await axios.post(`${BACKEND_URL}/judge0/run`, { 
         sourceCode: code, 
         language, 
         problemId: questionId
@@ -122,7 +124,7 @@ export default function QuestionPage() {
 
     if (allAccepted) {
         try {
-            const response = await axios.post("http://localhost:3000/judge0/submit", { 
+            const response = await axios.post(`${BACKEND_URL}/judge0/submit`, { 
                 problemId: questionId,
                 topicId: topic.id
             }, { withCredentials: true });
@@ -137,7 +139,7 @@ export default function QuestionPage() {
   useEffect(() => {
     const checkIfSolved = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/judge0/isSolved/${questionId}`, 
+        const response = await axios.get(`${BACKEND_URL}/judge0/isSolved/${questionId}`, 
         { withCredentials: true });
   
         setIsSolved(response.data.solved); 

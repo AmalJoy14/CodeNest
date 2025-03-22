@@ -7,6 +7,8 @@ import topicsData from './Topics/topicsData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo , faXmark , faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 
 
 export default function TopicPage() {
@@ -23,7 +25,7 @@ export default function TopicPage() {
   useEffect(() => {
     const fetchSolvedProblems = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/problems/solved", { withCredentials: true });
+        const response = await axios.get(`${BACKEND_URL}/problems/solved`, { withCredentials: true });
         setSolvedProblems(new Set(response.data.solvedProblems)); 
       } catch (error) {
         console.error("Error fetching solved problems:", error);

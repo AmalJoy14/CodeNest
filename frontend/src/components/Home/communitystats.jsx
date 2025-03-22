@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import styles from './CommunityStats.module.css'
 import axios from 'axios'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 export default function CommunityStats() {
   const [stats, setStats] = useState([
@@ -15,7 +16,7 @@ export default function CommunityStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/home/homeData")
+        const response = await axios.get(`${BACKEND_URL}/home/homeData`)
         const data = response.data
 
         const fetchedStats = [

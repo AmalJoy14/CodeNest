@@ -4,6 +4,7 @@ import { faCheck , faTimes} from '@fortawesome/free-solid-svg-icons';
 import styles from "./UsernameForms.module.css"
 import Axios from "axios";
 import { useEffect, useState } from "react";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 
 const validateLeetcodeUsername = async (username) => {
@@ -47,7 +48,7 @@ export default function UsernameForms({ platform }) {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const response = await Axios.get(`http://localhost:3000/platform/getUsername?platform=${platform}`, {
+        const response = await Axios.get(`${BACKEND_URL}/platform/getUsername?platform=${platform}`, {
           withCredentials: true,
         });
         if (response.data.username) {
@@ -93,7 +94,7 @@ export default function UsernameForms({ platform }) {
     console.log(`Valid ${platform} username`);
     try {
       const response = await Axios.post(
-        "http://localhost:3000/platform/addUsername",
+        `${BACKEND_URL}/platform/addUsername`,
         { platform, platformUsername: content },
         { withCredentials: true }
       );

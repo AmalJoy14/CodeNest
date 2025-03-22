@@ -138,5 +138,39 @@ router.get('/:id/getImage', authenticateToken, async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.delete('/:postId/delete',authenticateToken, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+
+    await Post.findByIdAndDelete(req.params.postId);
+    res.json({ message: "Post deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting post" });
+  }
+});
+
+
+router.delete('/:postId/comment/:commentId/delete', authenticateToken, async (req, res) => {
+  try {
+    const { postId, commentId } = req.params;
+
+    const post = await Post.findById(postId);
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    const commentIndex = post.comments.findIndex(comment => comment._id.toString() === commentId);
+    if (commentIndex === -1) return res.status(404).json({ message: "Comment not found" });
+
+    post.comments.splice(commentIndex, 1);
+    await post.save();
+
+    res.json({ message: "Comment deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    res.status(500).json({ message: "Error deleting comment" });
+  }
+});
   
 export default router;

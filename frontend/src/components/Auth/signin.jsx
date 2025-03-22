@@ -2,6 +2,7 @@ import React ,{useState} from "react";
 import Axios from "axios";
 import './signin.css';
 import { Link, useNavigate } from 'react-router-dom';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const SignIn = () => {
     const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const SignIn = () => {
 
         try {
             const response = await Axios.post(
-                "http://localhost:3000/api/signin",
+                `${BACKEND_URL}/api/signin`,
                 {username, password },
                 {withCredentials: true}
             );

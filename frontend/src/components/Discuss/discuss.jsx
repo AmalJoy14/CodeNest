@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react"
-import Header from "../Header"
-import Footer from "../Footer"
+import Header from "../header"
+import Footer from "../footer"
 import styles from "./discuss.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp , faThumbsDown , faComment , faUser} from "@fortawesome/free-regular-svg-icons"
@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import axios from 'axios';
 import Loader from "../loader";
 import noProfileImage from "../../assets/noProfileImage.png";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 export default function DiscussPage() {
   
@@ -29,7 +30,7 @@ export default function DiscussPage() {
 
   const fetchDiscussions = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/discuss/getPosts', { withCredentials: true });
+      const response = await axios.get(`${BACKEND_URL}/discuss/getPosts`, { withCredentials: true });
       setDiscussions(response.data.posts);
       setUserId(response.data.userId); 
     } catch (error) {
@@ -46,13 +47,38 @@ export default function DiscussPage() {
     if (userImages[userId]) return; // Avoid duplicate requests
   
     try {
-      const response = await axios.get(`http://localhost:3000/discuss/${userId}/getImage`, {
+      const response = await axios.get(`${BACKEND_URL}/discuss/${userId}/getImage`, {
         withCredentials: true,
       });
       setUserImages((prev) => ({ ...prev, [userId]: response.data.imageUrl }));
     } catch (error) {
       console.error("Error fetching user image:", error);
       setUserImages((prev) => ({ ...prev, [userId]: null })); // Fallback if failed
+    }
+  };
+
+  const handleDeletePost = async (postId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/discuss/${postId}/delete`, { withCredentials: true });
+      setDiscussions((prevDiscussions) => prevDiscussions.filter(post => post._id !== postId));
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
+  };
+
+  const handleDeleteComment = async (postId, commentId) => {
+    try {
+      await axios.delete(`${BACKEND_URL}/discuss/${postId}/comment/${commentId}/delete`, { withCredentials: true });
+  
+      setDiscussions(prevDiscussions =>
+        prevDiscussions.map(post =>
+          post._id === postId
+            ? { ...post, comments: post.comments.filter(comment => comment._id !== commentId) }
+            : post
+        )
+      );
+    } catch (error) {
+      console.error("Error deleting comment:", error);
     }
   };
 
@@ -78,7 +104,7 @@ export default function DiscussPage() {
 
   const handleLike = async (postId) => {
     try {
-      await axios.post(`http://localhost:3000/discuss/${postId}/like`, {}, { withCredentials: true });
+      await axios.post(`${BACKEND_URL}/discuss/${postId}/like`, {}, { withCredentials: true });
       setDiscussions((prevDiscussions) =>
         prevDiscussions.map((post) =>
           post._id === postId
@@ -99,7 +125,7 @@ export default function DiscussPage() {
   
   const handleDislike = async (postId) => {
     try {
-      await axios.post(`http://localhost:3000/discuss/${postId}/dislike`, {}, { withCredentials: true });
+      await axios.post(`${BACKEND_URL}/discuss/${postId}/dislike`, {}, { withCredentials: true });
       setDiscussions((prevDiscussions) =>
         prevDiscussions.map((post) =>
           post._id === postId
@@ -123,7 +149,7 @@ export default function DiscussPage() {
   
     try {
       const response = await axios.post(
-        `http://localhost:3000/discuss/${postId}/comment`,
+        `${BACKEND_URL}/discuss/${postId}/comment`,
         { content: newCommentContent },
         { withCredentials: true }
       );
@@ -143,7 +169,7 @@ export default function DiscussPage() {
 
     if (newTopicTitle.trim() && newTopicContent.trim()) {
       try {
-        const response = await axios.post('http://localhost:3000/discuss/createPost',{title: newTopicTitle, content: newTopicContent},{ withCredentials: true});
+        const response = await axios.post(`${BACKEND_URL}/discuss/createPost`,{title: newTopicTitle, content: newTopicContent},{ withCredentials: true});
 
         if (response.status === 200) {
           setNewTopicTitle("");
@@ -251,6 +277,11 @@ export default function DiscussPage() {
                         <p className={styles.createdDateBox}>
                           <FontAwesomeIcon icon={faCalendarDays} />{new Date(post.dateCreated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                         </p>
+                        {post.userId?._id === userId && (
+                          <button onClick={() => handleDeletePost(post._id)} className={styles.deleteBtn}>
+                            <FontAwesomeIcon icon={faTrash} /> Delete Post
+                          </button>
+                        )}
                       </div>
                       {expandedComment && (
                       <div className={styles.commentSectionContainer}>
@@ -279,6 +310,11 @@ export default function DiscussPage() {
                             <strong>{comment.userId?.username || "Unknown"}</strong>
                             <p>{comment.content}</p>
                             <div className={styles.daysAgo}>{formatTimeAgo(comment.date)}</div>
+                            {comment.userId?._id === userId && (
+                              <button onClick={() => handleDeleteComment(post._id, comment._id)} className={styles.deleteCommentBtn}>
+                                <FontAwesomeIcon icon={faTrash} />
+                              </button>
+                              )}
                           </li>
                         ))}
                         </ul>

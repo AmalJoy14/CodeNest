@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import Axios from "axios";
 import './signup.css';
 import { Link , useNavigate} from 'react-router-dom';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const SignUp = () => {
     const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ const SignUp = () => {
 
         try {
             const response = await Axios.post(
-                "http://localhost:3000/api/signup",
+                `${BACKEND_URL}/api/signup`,
                 {fullname ,username, password },
                 {withCredentials: true}
             );
@@ -40,9 +41,9 @@ const SignUp = () => {
                 </div> 
                 <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" className="signup-input" placeholder="Fullname" value={fullname} onChange={(e) => setFullname(e.target.value)} required />
-                    <input type="text" className="signup-input" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                    <input type="password" className="signup-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <input type="text" className="signup-input" placeholder="Fullname" value={fullname} onChange={(e) => setFullname(e.target.value)} required minLength={3}/>
+                    <input type="text" className="signup-input" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required minLength={3}/>
+                    <input type="password" className="signup-input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={3}/>
                     <button type="submit" className="signup-button">Register</button>
                 </form>
                 <div className="errorbox">

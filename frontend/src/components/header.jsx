@@ -5,6 +5,7 @@ import axios from 'axios';
 import logo from '../assets/b-logo.svg';
 import noProfileImage from '../assets/noProfileImage.png';
 import { useState, useEffect } from 'react';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 function Header() {
   const [imageUrl, setImageUrl] = useState(null);
@@ -13,7 +14,7 @@ function Header() {
   useEffect(() => {
     const fetchProfileImage = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/profileImage", {
+        const response = await axios.get(`${BACKEND_URL}/profileImage`, {
           withCredentials: true, 
         });
         

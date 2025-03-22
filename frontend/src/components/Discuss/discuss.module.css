@@ -393,3 +393,35 @@
     color: #666666;
     font-size: small;
   }
+
+  .deleteBtn {
+    background: rgb(245, 213, 213);
+    border: 2px solid red;
+    border-radius: 5px;
+    width: 100px;
+    color: red;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .deleteBtn:hover {
+    color: darkred;
+  }
+
+  .deleteCommentBtn{
+    color:#f0ffff;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+    border-radius: 00% 20% 0% 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    top: -0px;
+    font-size: xx-small;
+  }

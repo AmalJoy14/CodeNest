@@ -1,6 +1,6 @@
 import { useRef, useState , useEffect} from "react";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../header";
+import Footer from "../footer";
 import styles from "./profile.module.css";
 import axios from "axios";
 import noProfileImage from "../../assets/noProfileImage.png";
@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import Loader from "../loader";
 import ProblemChart from "./chart";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -18,7 +20,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/profile/profileData", {
+        const response = await axios.get(`${BACKEND_URL}/profile/profileData`, {
           withCredentials: true,
         });
         setUser(response.data);
@@ -39,7 +41,7 @@ export default function Profile() {
     formData.append("image", file);
 
     try {
-      await axios.post("http://localhost:3000/profile/profileupload", formData, {
+      await axios.post(`${BACKEND_URL}/profile/profileupload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });

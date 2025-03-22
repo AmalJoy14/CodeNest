@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import topicsData from "./Topics/topicsData"; 
 import { useState , useEffect } from "react";
 import axios from "axios";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 function Problems() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function Problems() {
   useEffect(() => {
     const fetchSolvedProblems = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/problems/countSolved", {
+        const response = await axios.get(`${BACKEND_URL}/problems/countSolved`, {
           withCredentials: true, 
         });
         const solvedProblems = response.data;

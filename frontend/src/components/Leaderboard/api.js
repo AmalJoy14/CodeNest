@@ -1,16 +1,18 @@
 import Axios from 'axios';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 
 export async function fetchLeaderboardData(platform) {
   try {
     let url = "";
     
     if (platform === "LeetCode") {
-      url = "http://localhost:3000/leaderboard/leetcode"; 
+      url = `${BACKEND_URL}/leaderboard/leetcode`; 
     } else if (platform === "Codeforces") {
-      url = "http://localhost:3000/leaderboard/codeforces";
+      url = `${BACKEND_URL}/leaderboard/codeforces`;
     } 
     else if(platform === "CodeNest"){
-      url = "http://localhost:3000/leaderboard/codenest";
+      url = `${BACKEND_URL}/leaderboard/codenest`;
     }
     else {
       throw new Error("Unsupported platform");

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import CanvasJSReact from "@canvasjs/react-charts";
 import axios from "axios";
 import Loader from "../loader";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -16,7 +18,7 @@ class ProblemChart extends Component {
 
   async componentDidMount() {
     try {
-      const response = await axios.get("http://localhost:3000/profile/profileData", {
+      const response = await axios.get(`${BACKEND_URL}/profile/profileData`, {
         withCredentials: true,
       });
       this.setState({ user: response.data, isLoading: false });

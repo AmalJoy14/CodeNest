@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navigate , useLocation} from 'react-router-dom';
 import Axios from 'axios';
 import Loader from '../loader';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 
 const PrivateRoute = ({ children }) => {
@@ -11,7 +12,7 @@ const PrivateRoute = ({ children }) => {
 
   useEffect(() => {
     // Make an API call to verify if the user is authenticated
-    Axios.get("http://localhost:3000/authenticate", { withCredentials: true })
+    Axios.get(`${BACKEND_URL}/authenticate`, { withCredentials: true })
       .then((response) => {
         setAuthenticated(true);
         setLoading(false);

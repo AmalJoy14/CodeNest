@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import styles from "./signout.module.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 
 function SignOutModal({ isOpen, onClose}) {
@@ -29,7 +30,7 @@ function SignOutModal({ isOpen, onClose}) {
 
   const onSignOut = async () => {
     try {
-      await axios.get("http://localhost:3000/api/logout", { withCredentials: true })
+      await axios.get(`${BACKEND_URL}/api/logout`, { withCredentials: true })
       onClose()
       navigate("/signin")
     } catch (error) {
