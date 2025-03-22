@@ -1,9 +1,10 @@
 import express from "express"
 import userModel from "../models/user.js";
+import { authenticateToken } from "../Middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/homeData", async (req, res) => {
+router.get("/homeData",authenticateToken, async (req, res) => {
     try {
         const userCount = await userModel.countDocuments();
 
