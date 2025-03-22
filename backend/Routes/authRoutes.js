@@ -15,7 +15,12 @@ router.post("/signup", async (req, res) => {
     const newUser = await userModel.create({ fullname, username, password: hashedPassword });
 
     const token = jwt.sign({ username }, process.env.ACCESS_TOKEN_SECRET);
-    res.cookie("token", token);
+    res.cookie("token", token ,{
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+    });
     res.status(200).json({ message: "User registered successfully" });
 });
 
@@ -31,7 +36,12 @@ router.post("/signin", async (req, res) => {
     if (!match) return res.status(404).json({ message: "Username or password is incorrect!" });
 
     const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET);
-    res.cookie("token", token);
+    res.cookie("token", token ,{
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+    });
     res.status(200).json({ message: "User signed in successfully" });
 });
 
