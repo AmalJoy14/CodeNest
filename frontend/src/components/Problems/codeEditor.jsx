@@ -1,22 +1,35 @@
 import React, { useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 
 const CodeEditor = ({ code, onCodeChange, language }) => {
-  const [langExtension, setLangExtension] = useState([]);
+  const [langExtension, setLangExtension] = useState(null);
+  const CodeMirror = window.ReactCodeMirror;
 
   useEffect(() => {
     const loadLanguage = async () => {
-      const langModules = {
-        javascript: () => import("@codemirror/lang-javascript").then(m => m.javascript()),
-        python: () => import("@codemirror/lang-python").then(m => m.python()),
-        cpp: () => import("@codemirror/lang-cpp").then(m => m.cpp()),
-        java: () => import("@codemirror/lang-java").then(m => m.java()),
-        go: () => import("@codemirror/lang-go").then(m => m.go()),
-        rust: () => import("@codemirror/lang-rust").then(m => m.rust()),
-      };
-
-      const extension = langModules[language] ? await langModules[language]() : await langModules["javascript"]();
-      setLangExtension([extension]);
+      let extension;
+      switch (language) {
+        case "javascript":
+          extension = (await import("https://unpkg.com/@codemirror/lang-javascript@latest/dist/index.js")).javascript();
+          break;
+        case "python":
+          extension = (await import("https://unpkg.com/@codemirror/lang-python@latest/dist/index.js")).python();
+          break;
+        case "cpp":
+          extension = (await import("https://unpkg.com/@codemirror/lang-cpp@latest/dist/index.js")).cpp();
+          break;
+        case "java":
+          extension = (await import("https://unpkg.com/@codemirror/lang-java@latest/dist/index.js")).java();
+          break;
+        case "go":
+          extension = (await import("https://unpkg.com/@codemirror/lang-go@latest/dist/index.js")).go();
+          break;
+        case "rust":
+          extension = (await import("https://unpkg.com/@codemirror/lang-rust@latest/dist/index.js")).rust();
+          break;
+        default:
+          extension = (await import("https://unpkg.com/@codemirror/lang-javascript@latest/dist/index.js")).javascript();
+      }
+      setLangExtension(extension);
     };
 
     loadLanguage();
@@ -27,7 +40,7 @@ const CodeEditor = ({ code, onCodeChange, language }) => {
       value={code}
       height="100%"
       width="100%"
-      extensions={langExtension}
+      extensions={langExtension ? [langExtension] : []}
       onChange={(value) => onCodeChange(value)}
       basicSetup={{ foldGutter: false }}
     />
