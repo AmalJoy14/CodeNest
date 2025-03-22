@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { authenticateToken } from "../Middlewares/authMiddleware.js";
 import Post from "../models/posts.js";
 import userModel from "../models/user.js";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000";
 
 const router = express.Router();
 
@@ -132,7 +133,7 @@ router.post('/:postId/comment', authenticateToken, async (req, res) => {
 router.get('/:id/getImage', authenticateToken, async (req, res) => {
   try {
     const user = await userModel.findById(req.params.id);
-    const imageUrl = user.image ? `http://localhost:3000/public/profiles/${user.image}` : null;
+    const imageUrl = user.image ? `${BACKEND_URL}/public/profiles/${user.image}` : null;
     res.status(200).json({ imageUrl });
   } catch (error) {
     res.status(500).json(error);

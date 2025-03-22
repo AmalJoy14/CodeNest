@@ -2,6 +2,7 @@ import express from "express";
 import axios from "axios";
 import userModel from "../models/user.js";
 import { authenticateToken } from "../Middlewares/authMiddleware.js";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000";
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get("/codenest", authenticateToken, async (req, res) => {
         const leaderboard = users.map(user => ({
             platformUsername : user.username,
             fullname: user.fullname,
-            imageUrl: user.image ? `http://localhost:3000/public/profiles/${user.image}` : null,
+            imageUrl: user.image ? `${BACKEND_URL}/public/profiles/${user.image}` : null,
             contestRating: user.easySolved * 3 + user.mediumSolved * 5 + user.hardSolved * 8,
             totalSolved: user.easySolved + user.mediumSolved + user.hardSolved,
             highlight: user.username === username
@@ -53,7 +54,7 @@ router.get('/leetcode',authenticateToken, async (req, res) => {
             return {
                 username: user.username,
                 platformUsername: user.leetcodeUsername,
-                imageUrl : user.image ? `http://localhost:3000/public/profiles/${user.image}` : null,
+                imageUrl : user.image ? `${BACKEND_URL}/public/profiles/${user.image}` : null,
                 fullname: user.fullname,
                 contestRating: rating || 0,
                 totalSolved: totalSolved || 0,
@@ -84,7 +85,7 @@ router.get('/codeforces',authenticateToken, async (req, res) => {
             username: codeforcesUsers[index].username, 
             platformUsername: userData.handle,
             fullname: codeforcesUsers[index].fullname,
-            imageUrl : codeforcesUsers[index].image ? `http://localhost:3000/public/profiles/${codeforcesUsers[index].image}` : null,
+            imageUrl : codeforcesUsers[index].image ? `${BACKEND_URL}/public/profiles/${codeforcesUsers[index].image}` : null,
             contestRating: userData.rating || 0,
             totalSolved: userData.contribution || 0,
             highlight: userData.handle === codeforcesUsername.codeforcesUsername

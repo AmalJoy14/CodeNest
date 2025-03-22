@@ -2,6 +2,7 @@ import express from "express";
 import userModel from "../models/user.js";
 import { authenticateToken } from "../Middlewares/authMiddleware.js";
 import upload from "../utils/multerConfig.js";
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000";
 
 const router = express.Router();
 
@@ -36,7 +37,7 @@ router.get("/profileData", authenticateToken, async (req, res) => {
     });
     const rank = users.findIndex(user => user.username === username) + 1;
 
-    const imageUrl = userDetails.image ? `http://localhost:3000/public/profiles/${userDetails.image}` : null;
+    const imageUrl = userDetails.image ? `${BACKEND_URL}/public/profiles/${userDetails.image}` : null;
     res.status(200).json({imageUrl, username : userDetails.username, fullname : userDetails.fullname , contestRating, totalSolved ,easySolved , mediumSolved , hardSolved, createdAt : formattedDate , rank});
 });
 
