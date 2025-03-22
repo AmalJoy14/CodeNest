@@ -10,9 +10,9 @@ import testCases9 from './testCases9.js';
 import testCases10 from './testCases10.js';
 import testCases11 from './testCases11.js';
 import testCases12 from './testCases12.js';
-// import testCases13 from './testCases/testCases13.js';
-// import testCases14 from './testCases/testCases14.js';
-// import testCases15 from './testCases/testCases15.js';
+import testCases13 from './testCases13.js';
+import testCases14 from './testCases14.js';
+import testCases15 from './testCases15.js';
 
 
 const testCases = {
@@ -28,9 +28,9 @@ const testCases = {
   ...testCases10,
   ...testCases11,
   ...testCases12,
-//   ...testCases13,
-//   ...testCases14,
-//   ...testCases15,
+  ...testCases13,
+  ...testCases14,
+  ...testCases15,
 };
 
 export default testCases;

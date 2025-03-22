@@ -1392,7 +1392,7 @@ const topicsData = [
           "2 <= cost.length <= 1000",
           "0 <= cost[i] <= 999"
         ],
-        defaultCode: ""
+        defaultCode: "Sample Input: \n3\n10 15 20\n\nSample Output: \n15"
       },
 
       {
@@ -1419,7 +1419,7 @@ const topicsData = [
           "1 <= nums.length <= 100",
           "0 <= nums[i] <= 400"
         ],
-        defaultCode: ""
+        defaultCode: "Sample Input: \n4\n1 2 3 1\n\nSample Output: \n4"
       },
 
     ]
@@ -1514,7 +1514,7 @@ const topicsData = [
         constraints: [
           "0 ≤ n ≤ 10⁵"
         ],
-        defaultCode: ""
+        defaultCode: "Sample Input: \n2\n\nSample Output: \n0 1 1"
       },
 
       {
@@ -1541,11 +1541,11 @@ const topicsData = [
           }
         ],
         constraints: [
-          "1 ≤ nums.length ≤ 3 × 10⁴",
+          "1 ≤ nums.length ≤ 3 × 10⁴ + 1",
           "-3 × 10⁴ ≤ nums[i] ≤ 3 × 10⁴",
           "Each element in the array appears twice except for one element which appears only once."
         ],
-        defaultCode: ""
+        defaultCode: "Sample Input: \n3\n2 2 1\n\nSample Output: \n1"
       },
 
       {

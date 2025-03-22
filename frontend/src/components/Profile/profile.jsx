@@ -63,8 +63,8 @@ export default function Profile() {
               <button type="button" onClick={() => fileInputRef.current.click()} className={styles.uploadButton}><FontAwesomeIcon icon={faPen} /></button>
             </div>
             <div>
-              <h2 className={styles.username}>{user.username}</h2>
-              <h4 className={styles.fullname}>@{user.fullname}</h4>
+              <h2 className={styles.username}>{user.fullname}</h2>
+              <h4 className={styles.fullname}>@{user.username}</h4>
               <p className={styles.joinDate}>Joined on {user.createdAt}</p>
             </div>
           </div>
