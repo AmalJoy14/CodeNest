@@ -40,10 +40,12 @@ app.use("/public", express.static("public"));
 app.use("/judge0", judge0Routes);
 app.use("/problems", problemsRoutes);
 
+
 app.get('/profileImage', authenticateToken,async (req, res) => {
     const username = req.user.username;
     const userDetails = await userModel.findOne({ username });
-    const imageUrl = userDetails.image ? `http://localhost:3000/public/profiles/${userDetails.image}` : null;
+    const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:3000";
+    const imageUrl = userDetails.image ? `${BACKEND_URL}/public/profiles/${userDetails.image}` : null;
     res.status(200).json({ imageUrl , username});
 });
 
