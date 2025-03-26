@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import * as CanvasJSReact from "@canvasjs/react-charts";
+import CanvasJSReact from '@canvasjs/react-charts';
 import axios from "axios";
 import Loader from "../loader";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 
+var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class ProblemChart extends Component {
