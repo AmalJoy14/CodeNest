@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CanvasJSReact from "@canvasjs/react-charts";
+import * as CanvasJSReact from "@canvasjs/react-charts";
 import axios from "axios";
 import Loader from "../loader";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";

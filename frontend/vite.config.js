@@ -7,6 +7,11 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 900,
   },
+  resolve: {
+    alias: {
+      "@canvasjs/react-charts": "/node_modules/@canvasjs/react-charts"
+    }
+  },
   server: {
     port: 5173,
   }
