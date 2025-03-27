@@ -3,6 +3,7 @@ import Axios from "axios";
 import './signin.css';
 import { Link, useNavigate } from 'react-router-dom';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+import logo from '../assets/b-logo.svg'; 
 
 const SignIn = () => {
     const [username, setUsername] = useState("");
@@ -36,7 +37,7 @@ const SignIn = () => {
         <div className="signin-full">
             <div className="signin-container">
                 <div className="img-container">
-                    <img src="src/assets/b-logo.svg" alt="Icon" width={50} height={50} />
+                    <img src={logo} alt="Icon" width={50} height={50} />
                 </div> 
                 <h2>Sign In</h2>
                 <form onSubmit={handleSubmit}>
