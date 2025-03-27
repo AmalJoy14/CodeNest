@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import Axios from "axios";
 import './signup.css';
-import logo from '../assets/b-logo.svg'; 
+import logo from '../../assets/b-logo.svg'; 
 import { Link , useNavigate} from 'react-router-dom';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
