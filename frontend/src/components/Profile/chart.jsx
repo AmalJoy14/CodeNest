@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import CanvasJSReact from '@canvasjs/react-charts';
 import axios from "axios";
+import ReactApexChart from "react-apexcharts";
 import Loader from "../loader";
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
-
-
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class ProblemChart extends Component {
   constructor(props) {
@@ -34,46 +31,47 @@ class ProblemChart extends Component {
       return <Loader />;
     }
 
-    const { username } = this.state.user;
-    const easySolved = this.state.user.easySolved || 0;
-    const mediumSolved = this.state.user.mediumSolved || 0;
-    const hardSolved = this.state.user.hardSolved || 0;
+    if (!this.state.user) {
+      return <p>Error loading data</p>;
+    }
+
+    const { easySolved = 0, mediumSolved = 0, hardSolved = 0 } = this.state.user;
     const totalSolved = easySolved + mediumSolved + hardSolved;
 
-
     const options = {
-      animationEnabled: true,
-      title: {
-        text: `Problem Solved`,
+      chart: {
+        type: "donut",
       },
-      subtitles: [
-        {
-          text: `Total Solved: ${totalSolved}`,
-          verticalAlign: "center",
-          fontSize: 20,
-          dockInsidePlotArea: true,
+      labels: ["Easy", "Medium", "Hard"],
+      colors: ["#4CAF50", "#FFC107", "#F44336"], // Green, Orange, Red
+      legend: {
+        position: "bottom",
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: "70%",
+          },
         },
-      ],
-      data: [
-        {
-          type: "doughnut",
-          showInLegend: true,
-          indexLabel: "{name}: {y}",
-          bevelEnabled: true,
-          innerRadius: "80%",
-          yValueFormatString: "#,###",
-          dataPoints: [
-            { name: "Easy", y: easySolved, color: "#4CAF50" },  // Green
-            { name: "Medium", y: mediumSolved, color: "#ffc107" },  // Orange
-            { name: "Hard", y: hardSolved, color: "#F44336" }   // Red
-          ],
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: (val) => `${val.toFixed(1)}%`,
+      },
+      title: {
+        text: `Total Solved: ${totalSolved}`,
+        align: "center",
+        margin: 20,
+        style: {
+          fontSize: "18px",
         },
-      ],
+      },
     };
 
     return (
       <div>
-        <CanvasJSChart options={options} />
+        {/* <h2>Problem Solved</h2> */}
+        <ReactApexChart options={options} series={[easySolved, mediumSolved, hardSolved]} type="donut" height={350} />
       </div>
     );
   }
