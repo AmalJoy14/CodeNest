@@ -222,14 +222,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anushsk030/CodeNest.git"
+    "url": "git+https://github.com/amaljoy14/CodeNest.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/anushsk030/CodeNest/issues"
-  },
-  "homepage": "https://github.com/anushsk030/CodeNest#readme"
+  "type": "module"
+  
 }
