@@ -20,6 +20,7 @@ router.post("/signup", async (req, res) => {
         secure: true,
         sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        path: "/"
     });
     res.status(200).json({ message: "User registered successfully" });
 });
@@ -29,11 +30,11 @@ router.post("/signin", async (req, res) => {
     const user = await userModel.findOne({ username: req.body.username });
     if (!user) return res.status(404).json({ message: "Username or password is incorrect!" });
 
-    user.lastSignIn = new Date();
-    await user.save();
-
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) return res.status(404).json({ message: "Username or password is incorrect!" });
+
+    user.lastSignIn = new Date();
+    await user.save();
 
     const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET);
     res.cookie("token", token ,{
@@ -41,13 +42,19 @@ router.post("/signin", async (req, res) => {
         secure: true,
         sameSite: "none",
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        path: "/",
     });
     res.status(200).json({ message: "User signed in successfully" });
 });
 
 // Logout Route
-router.get('/logout' ,(req,res) =>{
-    res.cookie("token", "");
+router.get('/logout', (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure: true,  
+        sameSite: "none",  
+        path: "/",
+    });
     res.status(200).json({ message: "User logged out successfully" });
 });
 
