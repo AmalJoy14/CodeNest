@@ -36,16 +36,19 @@
     color: #b3b3b3;
   }
   
-
   
-  .linkList1 , .linkList2 {
+  .linkList {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: .2rem 1.5rem;
     list-style-type: none;
     padding: 0;
+    max-width: 300px;
   }
+
   
   .link {
+    display: inline-block;
     color: white;
     text-decoration: none;
     transition: color 0.3s;

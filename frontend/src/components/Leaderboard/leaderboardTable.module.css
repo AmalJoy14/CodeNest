@@ -1,20 +1,25 @@
+.main{
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
 .tableContainer {
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10%;
-  }
-  
-  .table {
-    width: 85%;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-collapse: separate;
-    border-spacing: 0;
-  }
+  max-width: 95%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.table {
+  min-width: 1000px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-collapse: separate;
+  border-spacing: 0;
+  white-space: nowrap; /* Prevent table cells from wrapping */
+}
 
 
   .header {

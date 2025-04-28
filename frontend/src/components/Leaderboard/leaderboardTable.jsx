@@ -27,6 +27,7 @@ export default function LeaderboardTable({ platform }) {
   }
 
   return (
+    <div className={styles.main}>
     <div className={styles.tableContainer}>
       <div className={styles.table}>
         <div className={styles.header}>
@@ -60,6 +61,7 @@ export default function LeaderboardTable({ platform }) {
         </div>
       </div>
 
+    </div>
     </div>
   )
 }

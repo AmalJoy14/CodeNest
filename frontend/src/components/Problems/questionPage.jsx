@@ -29,6 +29,7 @@ export default function QuestionPage() {
   const [isSolved, setIsSolved] = useState(false);
   const [selectedTestCase, setSelectedTestCase] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent("languageChange", { detail: language }));
@@ -37,6 +38,17 @@ export default function QuestionPage() {
   useEffect(() => {
     setCode(commentOutCode(problem.defaultCode, language));
   }, [language]);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768); // assume <768px is mobile/tablet
+    };
+  
+    checkScreenSize(); // check once at start
+    window.addEventListener('resize', checkScreenSize); // check on resize
+  
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
 
   const languages = [
@@ -150,6 +162,20 @@ export default function QuestionPage() {
 
     checkIfSolved();
   }, []);
+
+  if (isMobile) {
+    return (
+      <div style={{
+        display: 'flex', 
+        height: '100vh', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        fontSize: '14px', 
+      }}>
+        Please open this page on a computer for full functionality.
+      </div>
+    );
+  }
 
 
   return (

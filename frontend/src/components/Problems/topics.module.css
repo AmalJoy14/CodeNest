@@ -4,6 +4,7 @@
     min-height: 100vh;
     background: rgb(0,0,0);
     background: linear-gradient(30deg, rgba(0,0,0,1) 0%, rgba(108,89,61,1) 52%, rgba(0,0,0,1) 100%);
+    overflow-x: hidden;
 }
 
 .main {
@@ -11,6 +12,8 @@
     margin: 0 auto;
     padding: 2rem 1rem;
     min-width: 90%;
+    max-width: 100%;
+    
 }
 
 .title {
@@ -24,12 +27,14 @@
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     border-radius: 0.5rem;
-    overflow: hidden;
+    max-width: 95vw;
+    overflow: auto;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+    
 }
 
 thead {

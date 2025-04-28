@@ -13,6 +13,7 @@
     padding: 2rem;
     min-width: 90%;
     margin: 0 auto;
+    max-width: 100%;
   }
   
   .title {
@@ -113,5 +114,12 @@
     font-size: small;
     right: -5px;
     bottom: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .avatar {
+      width: 5rem;
+      height: 5rem;
+    }
   }
   
